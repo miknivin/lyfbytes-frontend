@@ -146,8 +146,8 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
               </button>
             </form>
             <div className="mt-3 text-center">
-              <h6 className="mb-2">Or Register With</h6>
-              <ul className="list-inline">
+              {/* <h6 className="mb-2">Or Register With</h6> */}
+              {/* <ul className="list-inline">
                 <li className="list-inline-item">
                   <Link to="#" className="btn btn-outline-primary">
                     <i className="fab fa-google me-2"></i> Google
@@ -158,7 +158,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
                     <i className="fab fa-facebook-f me-2"></i> Facebook
                   </Link>
                 </li>
-              </ul>
+              </ul> */}
               <p className="mt-2">
                 Already have an account?{" "}
                 <button

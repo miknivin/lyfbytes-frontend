@@ -106,7 +106,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
               </button>
             </form>
             <div className="mt-3 text-center">
-              <h6 className="mb-2">Or Login With</h6>
+              {/* <h6 className="mb-2">Or Login With</h6>
               <ul className="list-inline">
                 <li className="list-inline-item">
                   <Link to="#" className="btn btn-outline-primary">
@@ -118,7 +118,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
                     <i className="fab fa-facebook-f me-2"></i> Facebook
                   </Link>
                 </li>
-              </ul>
+              </ul> */}
               <p className="mt-2">
                 Don't have an account?{" "}
                 <button
