@@ -1,0 +1,530 @@
+[
+    {
+        "id": 1,
+        "activeClass": "active",
+        "delay": "100",
+        "memberThumb": "1.jpg",
+        "designation": "Assistant Chef",
+        "name": "Alexander Petllo",
+        "email": "alexander@digital.com",
+        "phone": "+44-20-7328-4401",
+        "address": "175 10h Street, Office 375 Berlin, De 21562",
+        "skillProgress": [
+            {
+                "id": 1,
+                "title": "Fast Food",
+                "end": 88
+            },
+            {
+                "id": 2,
+                "title": "Sea Food",
+                "end": 95
+            },
+            {
+                "id": 3,
+                "title": "Drinks & Juice",
+                "end": 80
+            }
+        ],
+        "memberData": [
+            {
+                "id": 1,
+                "listTitle": "Education",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Residential College",
+                        "info": "BA Honours - Biology",
+                        "timeSpan": "2004 - 2008"
+                    },
+                    {
+                        "id": 2,
+                        "title": "University of Iowa",
+                        "info": "Master's degree - Macroeconomics",
+                        "timeSpan": "2009 - 2012"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "listTitle": "Experience",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Senior Chef",
+                        "info": "Dubai Arab Hotel",
+                        "timeSpan": "31 Aug, 2013"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Master of Restaurant",
+                        "info": "Muskan Food Factory",
+                        "timeSpan": "12 Dec 2018"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "activeClass": "",
+        "delay": "200",
+        "memberThumb": "2.jpg",
+        "designation": "Burger King",
+        "name": "Mendia Juxef",
+        "email": "kevin@digital.com",
+        "phone": "+44-20-7328-4402",
+        "address": "175 10h Street, Office 375 Berlin, De 21562",
+        "skillProgress": [
+            {
+                "id": 1,
+                "title": "Fast Food",
+                "end": 88
+            },
+            {
+                "id": 2,
+                "title": "Sea Food",
+                "end": 95
+            },
+            {
+                "id": 3,
+                "title": "Drinks & Juice",
+                "end": 80
+            }
+        ],
+        "memberData": [
+            {
+                "id": 1,
+                "listTitle": "Education",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Residential College",
+                        "info": "BA Honours - Biology",
+                        "timeSpan": "2004 - 2008"
+                    },
+                    {
+                        "id": 2,
+                        "title": "University of Iowa",
+                        "info": "Master's degree - Macroeconomics",
+                        "timeSpan": "2009 - 2012"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "listTitle": "Experience",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Senior Chef",
+                        "info": "Dubai Arab Hotel",
+                        "timeSpan": "31 Aug, 2013"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Master of Restaurant",
+                        "info": "Muskan Food Factory",
+                        "timeSpan": "12 Dec 2018"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "activeClass": "",
+        "delay": "300",
+        "memberThumb": "8.jpg",
+        "designation": "Main Chef",
+        "name": "Petro William",
+        "email": "sarah@digital.com",
+        "phone": "+44-20-7328-4403",
+        "address": "175 10h Street, Office 375 Berlin, De 21562",
+        "skillProgress": [
+            {
+                "id": 1,
+                "title": "Fast Food",
+                "end": 88
+            },
+            {
+                "id": 2,
+                "title": "Sea Food",
+                "end": 95
+            },
+            {
+                "id": 3,
+                "title": "Drinks & Juice",
+                "end": 80
+            }
+        ],
+        "memberData": [
+            {
+                "id": 1,
+                "listTitle": "Education",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Residential College",
+                        "info": "BA Honours - Biology",
+                        "timeSpan": "2004 - 2008"
+                    },
+                    {
+                        "id": 2,
+                        "title": "University of Iowa",
+                        "info": "Master's degree - Macroeconomics",
+                        "timeSpan": "2009 - 2012"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "listTitle": "Experience",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Senior Chef",
+                        "info": "Dubai Arab Hotel",
+                        "timeSpan": "31 Aug, 2013"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Master of Restaurant",
+                        "info": "Muskan Food Factory",
+                        "timeSpan": "12 Dec 2018"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "activeClass": "",
+        "delay": "400",
+        "memberThumb": "4.jpg",
+        "designation": "Pizza Master",
+        "name": "Kunnel Jexos",
+        "email": "aleesha@digital.com",
+        "phone": "+44-20-7328-4404",
+        "address": "175 10h Street, Office 375 Berlin, De 21562",
+        "skillProgress": [
+            {
+                "id": 1,
+                "title": "Fast Food",
+                "end": 88
+            },
+            {
+                "id": 2,
+                "title": "Sea Food",
+                "end": 95
+            },
+            {
+                "id": 3,
+                "title": "Drinks & Juice",
+                "end": 80
+            }
+        ],
+        "memberData": [
+            {
+                "id": 1,
+                "listTitle": "Education",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Residential College",
+                        "info": "BA Honours - Biology",
+                        "timeSpan": "2004 - 2008"
+                    },
+                    {
+                        "id": 2,
+                        "title": "University of Iowa",
+                        "info": "Master's degree - Macroeconomics",
+                        "timeSpan": "2009 - 2012"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "listTitle": "Experience",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Senior Chef",
+                        "info": "Dubai Arab Hotel",
+                        "timeSpan": "31 Aug, 2013"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Master of Restaurant",
+                        "info": "Muskan Food Factory",
+                        "timeSpan": "12 Dec 2018"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "activeClass": "",
+        "delay": "100",
+        "memberThumb": "3.jpg",
+        "designation": "Assistant Chef",
+        "name": "Alexander Petllo",
+        "email": "petllo@digital.com",
+        "phone": "+44-20-7328-4405",
+        "address": "175 10h Street, Office 375 Berlin, De 21562",
+        "skillProgress": [
+            {
+                "id": 1,
+                "title": "Fast Food",
+                "end": 88
+            },
+            {
+                "id": 2,
+                "title": "Sea Food",
+                "end": 95
+            },
+            {
+                "id": 3,
+                "title": "Drinks & Juice",
+                "end": 80
+            }
+        ],
+        "memberData": [
+            {
+                "id": 1,
+                "listTitle": "Education",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Residential College",
+                        "info": "BA Honours - Biology",
+                        "timeSpan": "2004 - 2008"
+                    },
+                    {
+                        "id": 2,
+                        "title": "University of Iowa",
+                        "info": "Master's degree - Macroeconomics",
+                        "timeSpan": "2009 - 2012"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "listTitle": "Experience",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Senior Chef",
+                        "info": "Dubai Arab Hotel",
+                        "timeSpan": "31 Aug, 2013"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Master of Restaurant",
+                        "info": "Muskan Food Factory",
+                        "timeSpan": "12 Dec 2018"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "activeClass": "",
+        "delay": "200",
+        "memberThumb": "7.jpg",
+        "designation": "Main Chef",
+        "name": "Istiak Ahmed",
+        "email": "juxe@digital.com",
+        "phone": "+44-20-7328-4406",
+        "address": "175 10h Street, Office 375 Berlin, De 21562",
+        "skillProgress": [
+            {
+                "id": 1,
+                "title": "Fast Food",
+                "end": 88
+            },
+            {
+                "id": 2,
+                "title": "Sea Food",
+                "end": 95
+            },
+            {
+                "id": 3,
+                "title": "Drinks & Juice",
+                "end": 80
+            }
+        ],
+        "memberData": [
+            {
+                "id": 1,
+                "listTitle": "Education",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Residential College",
+                        "info": "BA Honours - Biology",
+                        "timeSpan": "2004 - 2008"
+                    },
+                    {
+                        "id": 2,
+                        "title": "University of Iowa",
+                        "info": "Master's degree - Macroeconomics",
+                        "timeSpan": "2009 - 2012"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "listTitle": "Experience",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Senior Chef",
+                        "info": "Dubai Arab Hotel",
+                        "timeSpan": "31 Aug, 2013"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Master of Restaurant",
+                        "info": "Muskan Food Factory",
+                        "timeSpan": "12 Dec 2018"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "activeClass": "",
+        "delay": "300",
+        "memberThumb": "5.jpg",
+        "designation": "Burger King",
+        "name": "Mendia Juxef",
+        "email": "istiak@digital.com",
+        "phone": "+44-20-7328-4407",
+        "address": "175 10h Street, Office 375 Berlin, De 21562",
+        "skillProgress": [
+            {
+                "id": 1,
+                "title": "Fast Food",
+                "end": 88
+            },
+            {
+                "id": 2,
+                "title": "Sea Food",
+                "end": 95
+            },
+            {
+                "id": 3,
+                "title": "Drinks & Juice",
+                "end": 80
+            }
+        ],
+        "memberData": [
+            {
+                "id": 1,
+                "listTitle": "Education",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Residential College",
+                        "info": "BA Honours - Biology",
+                        "timeSpan": "2004 - 2008"
+                    },
+                    {
+                        "id": 2,
+                        "title": "University of Iowa",
+                        "info": "Master's degree - Macroeconomics",
+                        "timeSpan": "2009 - 2012"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "listTitle": "Experience",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Senior Chef",
+                        "info": "Dubai Arab Hotel",
+                        "timeSpan": "31 Aug, 2013"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Master of Restaurant",
+                        "info": "Muskan Food Factory",
+                        "timeSpan": "12 Dec 2018"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "activeClass": "",
+        "delay": "400",
+        "memberThumb": "4.jpg",
+        "designation": "Pizza Master",
+        "name": "Kunnel Jexos",
+        "email": "kunnel@digital.com",
+        "phone": "+44-20-7328-4408",
+        "address": "175 10h Street, Office 375 Berlin, De 21562",
+        "skillProgress": [
+            {
+                "id": 1,
+                "title": "Fast Food",
+                "end": 88
+            },
+            {
+                "id": 2,
+                "title": "Sea Food",
+                "end": 95
+            },
+            {
+                "id": 3,
+                "title": "Drinks & Juice",
+                "end": 80
+            }
+        ],
+        "memberData": [
+            {
+                "id": 1,
+                "listTitle": "Education",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Residential College",
+                        "info": "BA Honours - Biology",
+                        "timeSpan": "2004 - 2008"
+                    },
+                    {
+                        "id": 2,
+                        "title": "University of Iowa",
+                        "info": "Master's degree - Macroeconomics",
+                        "timeSpan": "2009 - 2012"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "listTitle": "Experience",
+                "memberInfo": [
+                    {
+                        "id": 1,
+                        "title": "Senior Chef",
+                        "info": "Dubai Arab Hotel",
+                        "timeSpan": "31 Aug, 2013"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Master of Restaurant",
+                        "info": "Muskan Food Factory",
+                        "timeSpan": "12 Dec 2018"
+                    }
+                ]
+            }
+        ]
+    }
+]

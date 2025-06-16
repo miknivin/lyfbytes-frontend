@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "thumb": "1.jpg",
+        "delay": "100",
+        "category": "Burger",
+        "title": "Announcing if attachment resolution sentiments at the projection.",
+        "date": "18 March, 2024",
+        "author": "Md Sohag"
+    },
+    {
+        "id": 2,
+        "thumb": "2.jpg",
+        "delay": "200",
+        "category": "Food",
+        "title": "This prefabricated passive are comfortable highly sustainable",
+        "date": "25 April, 2024",
+        "author": "Md Sohag"
+    },
+    {
+        "id": 3,
+        "thumb": "3.jpg",
+        "delay": "400",
+        "category": "Pizza",
+        "title": "Minuter him own clothes but observe country at the maintaining.",
+        "date": "15 June, 2024",
+        "author": "Md Sohag"
+    }
+]
