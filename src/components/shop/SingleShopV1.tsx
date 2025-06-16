@@ -233,6 +233,11 @@ const SingleShopV1 = ({ product }: { product: DataType }) => {
             </div>
             <h4 className="product-title">
               <Link to={`/shop-single-thumb/${_id}`}>{name}</Link>
+              {displayVariant.size && (
+                <p className="text-center fs-6 text-muted">
+                  ({displayVariant.size})
+                </p>
+              )}
             </h4>
             <div className="price">
               {oldPrice !== undefined && (
