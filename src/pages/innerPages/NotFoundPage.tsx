@@ -1,5 +1,5 @@
 import BreadCrumb from "../../components/breadCrumb/BreadCrumb";
-import LayoutV5 from "../../components/layouts/LayoutV6";
+import LayoutV5 from "../../components/layouts/LayoutV5";
 import NotFoundContent from "../../components/NotFound/NotFoundContent";
 
 const NotFoundPage = () => {

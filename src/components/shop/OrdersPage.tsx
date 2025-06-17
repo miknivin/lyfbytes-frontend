@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useMyOrdersQuery } from "../../store/api/orderApi";
 import LayoutV6 from "../layouts/LayoutV6";
+import { useEffect } from "react";
 
 const OrdersPage = () => {
   const {
@@ -8,7 +9,14 @@ const OrdersPage = () => {
     isLoading,
     isError,
     error,
-  } = useMyOrdersQuery(undefined);
+    refetch,
+  } = useMyOrdersQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   return (
     <LayoutV6 breadCrumb="Orders" title="Your Orders">
@@ -17,9 +25,17 @@ const OrdersPage = () => {
         {isLoading ? (
           <p>Loading orders...</p>
         ) : isError ? (
-          <p>
-            Error fetching orders:{" "}
-            {error && typeof error === "object" && "message" in error
+          <p className="text-center">
+            {" "}
+            {error &&
+            typeof error === "object" &&
+            "data" in error &&
+            typeof error.data === "object" &&
+            error.data !== null &&
+            "message" in error.data &&
+            error.data.message === "No orders found"
+              ? "No orders found"
+              : error && typeof error === "object" && "message" in error
               ? (error as { message: string }).message
               : error &&
                 typeof error === "object" &&
@@ -28,7 +44,7 @@ const OrdersPage = () => {
               ? (error as any).data
               : "Something went wrong"}
           </p>
-        ) : orders.length === 0 ? (
+        ) : !orders?.orders?.length ? (
           <p>No orders found.</p>
         ) : (
           <div className="table-responsive">
@@ -58,7 +74,7 @@ const OrdersPage = () => {
                     <td>₹{order?.totalAmount?.toFixed(2)}</td>
                     <td>{order?.orderStatus || "Processing"}</td>
                     <td>
-                      <Link to={order._id} className="">
+                      <Link to={`/orders/${order._id}`} className="">
                         View
                       </Link>
                     </td>

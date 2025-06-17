@@ -46,24 +46,18 @@ export default function MyAccount() {
               <section className="mb-8">
                 <p>
                   From your account dashboard, you can view your{" "}
-                  <Link
-                    className="text-blue-600 hover:underline"
-                    to="/my-account-orders"
-                  >
+                  <Link className="text-blue-600 hover:underline" to="/orders">
                     recent orders
                   </Link>
-                  , manage your{" "}
+                  {/* , manage your{" "}
                   <Link
                     className="text-blue-600 hover:underline"
                     to="/my-account-address"
                   >
                     shipping and billing addresses
-                  </Link>
-                  , and{" "}
-                  <Link
-                    className="text-blue-600 hover:underline"
-                    to="/my-account-edit"
-                  >
+                  </Link> */}{" "}
+                  and{" "}
+                  <Link className="text-blue-600 hover:underline" to="/profile">
                     edit your account details
                   </Link>
                   .

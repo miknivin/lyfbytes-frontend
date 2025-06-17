@@ -139,7 +139,7 @@ const CheckoutContent = () => {
         email: "",
         orderNotes: "",
       });
-      navigate("/order-confirmation");
+      navigate("/orders");
     } catch (error: any) {
       toast.error(error?.data?.message || "Failed to place order");
     }
