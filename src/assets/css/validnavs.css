@@ -3309,6 +3309,10 @@ ul.simple-menu-list > li i {
     top: 90px;
   }
 
+  nav.navbar.navbar-box ul.nav > li > .active {
+    color: var(--color-primary) !important;
+  }
+
   nav.navbar.validnavs.navbar-box .nav-box {
     background: linear-gradient(
       0deg,

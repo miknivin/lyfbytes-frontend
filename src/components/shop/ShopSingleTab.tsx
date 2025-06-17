@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import ReviewForm from "../form/ReviewForm";
 import { DataType } from "./../../pages/shopPage/ShopSingleThumbPage";
+import DOMPurify from "dompurify";
+import TestimonialV2 from "../testimonial/TestimonialV2";
 
 const ShopSingleTab = ({ productInfo }: { productInfo: DataType }) => {
   return (
@@ -52,7 +54,19 @@ const ShopSingleTab = ({ productInfo }: { productInfo: DataType }) => {
               role="tabpanel"
               aria-labelledby="description-tab-control"
             >
-              <p>{productInfo.details.ingredientsDescription}</p>
+              <div className="description-content">
+                {productInfo?.details?.additionalDescription ? (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(
+                        productInfo.details.additionalDescription
+                      ),
+                    }}
+                  />
+                ) : (
+                  <p>No description available</p>
+                )}
+              </div>
             </div>
             <div
               className="tab-pane fade"
@@ -81,7 +95,7 @@ const ShopSingleTab = ({ productInfo }: { productInfo: DataType }) => {
               role="tabpanel"
               aria-labelledby="review-tab-control"
             >
-              <h4>1 review for “{productInfo.name}”</h4>
+              {/* <h4>1 review for “{productInfo.name}”</h4>
               <div className="review-items">
                 <div className="item">
                   <div className="thumb">
@@ -97,7 +111,7 @@ const ShopSingleTab = ({ productInfo }: { productInfo: DataType }) => {
                     </div>
                     <div className="review-date">April 8, 2021</div>
                     <div className="review-authro">
-                      <h5>Aleesha Brown</h5>
+                      <h5>Aleesha</h5>
                     </div>
                     <p>Highly recommended. Will purchase more in future.</p>
                   </div>
@@ -118,7 +132,7 @@ const ShopSingleTab = ({ productInfo }: { productInfo: DataType }) => {
                     <div className="review-authro">
                       <h5>Sarah Albert</h5>
                     </div>
-                    <p>Great product quality!</p>
+                    <p>Auth!</p>
                   </div>
                 </div>
               </div>
@@ -146,7 +160,8 @@ const ShopSingleTab = ({ productInfo }: { productInfo: DataType }) => {
                   </div>
                 </div>
                 <ReviewForm />
-              </div>
+              </div> */}
+              <TestimonialV2 hasBg={false} />
             </div>
           </div>
         </div>

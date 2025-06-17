@@ -9,6 +9,7 @@ export interface DataType {
   name: string;
   details: {
     ingredientsDescription: string;
+    additionalDescription?: string;
   };
   ratings: number;
   images: Array<{

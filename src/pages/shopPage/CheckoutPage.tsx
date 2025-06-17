@@ -1,5 +1,5 @@
 import CheckoutContent from "../../components/cart/CheckoutContent";
-import LayoutV5 from "../../components/layouts/LayoutV6";
+import LayoutV5 from "../../components/layouts/LayoutV5";
 
 const CheckoutPage = () => {
   return (

@@ -7520,3 +7520,22 @@ ul.meal-items.style-two li {
 .tab-button:hover {
   color: #000 !important;
 }
+
+.description-content ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+.description-content li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.description-content li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #000; /* Adjust color as needed */
+  font-size: 16px;
+}
