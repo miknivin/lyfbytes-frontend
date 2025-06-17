@@ -51,13 +51,16 @@ export const userApi = createApi({
   tagTypes: ["User", "AdminUsers", "AdminUser"],
   endpoints: (builder) => ({
     getMe: builder.query<User, void>({
-      query: () => "getMe",
+      query: () => ({
+        url: "getMe",
+        params: { t: Date.now() }, // Add timestamp to bust cache
+      }),
       transformResponse: (response: UserResponse) => {
         if (response.success) {
           const user = response.user || response.data;
           if (user) {
             return {
-              id: user.id,
+              id: user.id || "", // Handle backend _id
               name: user.name,
               email: user.email,
               phone: user.phone || "",
@@ -72,9 +75,9 @@ export const userApi = createApi({
           const { data } = await queryFulfilled;
           dispatch(
             setUser({
-              id: data.id || "", // Use id, not _id, fallback to empty string
+              id: data.id || "",
               name: data.name || "",
-              email: data.email || "", // Use email
+              email: data.email || "",
               phone: data.phone || "",
             })
           );
@@ -90,6 +93,7 @@ export const userApi = createApi({
         }
       },
       providesTags: ["User"],
+      extraOptions: { refetchOnMountOrArgChange: true }, // Force refetch on mount
     }),
     updateProfile: builder.mutation<
       User,
