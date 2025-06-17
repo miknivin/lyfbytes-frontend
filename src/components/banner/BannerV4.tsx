@@ -72,7 +72,7 @@ const BannerV4 = () => {
                       <div className="button mt-40">
                         <Link
                           className="btn btn-theme btn-md animation"
-                          to="/shop"
+                          to="/shop-single-thumb/684a70f1935b6e99fc9d286f"
                         >
                           Order Now
                         </Link>
@@ -107,16 +107,18 @@ const BannerV4 = () => {
                       {/* <h4>
                         Purchase today. just <strong>$58</strong>
                       </h4> */}
-                      <h2 className="slide-head">French Break Cheesy Pizza</h2>
+                      <h2 className="slide-head">
+                        LIFE BYTES <br /> TOMATO MURUKKU
+                      </h2>
                       <p>
-                        Plan upon yet way get cold spot its week. Almost do am
-                        or limits hearts. Resolve parties but why she shewing
-                        know.
+                        Traditional Kerala murukku gets a delicious makeover
+                        with tangy tomato flavoring in these crispy,
+                        spiral-shaped snacks
                       </p>
                       <div className="button mt-40">
                         <Link
                           className="btn btn-theme btn-md animation"
-                          to="/shop"
+                          to="/shop-single-thumb/684bce8e3086ec1d0a13d14a"
                         >
                           Order Now
                         </Link>
@@ -144,7 +146,9 @@ const BannerV4 = () => {
                       {/* <h4>
                         Purchase today. just <strong>$58</strong>
                       </h4> */}
-                      <h2 className="slide-head">French Break Cheesy Pizza</h2>
+                      <h2 className="slide-head">
+                        LIFE BYTES <br /> POPCORN
+                      </h2>
                       <p>
                         Plan upon yet way get cold spot its week. Almost do am
                         or limits hearts. Resolve parties but why she shewing
