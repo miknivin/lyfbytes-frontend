@@ -12,7 +12,7 @@ const FeatureV2 = () => {
           <img src={shape10} alt="Image Not Found" />
         </div>
         <div className="container">
-          <div className="row">
+          <div className="row gap-3">
             {/* Single item */}
             <div className="col-lg-5 feature-product-item">
               <Link
@@ -69,7 +69,10 @@ const FeatureV2 = () => {
                 to="/shop-single-thumb/684fec1e4c79c2acb46e2741"
                 data-aos="fade-up"
                 data-aos-delay="400"
-                style={{ backgroundImage: "url(/assets/img/shape/8.jpg)" }}
+                style={{
+                  backgroundImage: "url(/assets/img/shape/8.jpg)",
+                  marginTop: "15px",
+                }}
               >
                 <div className="info">
                   <h2>Jackfruit chips</h2>

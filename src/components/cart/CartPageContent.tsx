@@ -113,7 +113,7 @@ const CartPageContent = () => {
                             </Link>
                           </td>
                           <td className="product-price">
-                            ${item.price.toFixed(2)}
+                            ₹{item.price.toFixed(2)}
                           </td>
                           <td className="product-quantity">
                             <input
@@ -133,7 +133,7 @@ const CartPageContent = () => {
                             />
                           </td>
                           <td className="product-subtotal">
-                            ${(item.price * item.quantity).toFixed(2)}
+                            ₹{(item.price * item.quantity).toFixed(2)}
                           </td>
                         </tr>
                       ))
@@ -168,7 +168,7 @@ const CartPageContent = () => {
                   <thead>
                     <tr>
                       <th scope="col">Subtotal</th>
-                      <th scope="col">${subtotal.toFixed(2)}</th>
+                      <th scope="col">₹{subtotal.toFixed(2)}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -176,13 +176,11 @@ const CartPageContent = () => {
                       <th scope="row">Shipping</th>
                       <td>
                         <p>Free shipping</p>
-                        <p>Shipping to Australia.</p>
-                        <Link to="/shipping">Change address</Link>
                       </td>
                     </tr>
                     <tr>
                       <th scope="row">Total</th>
-                      <td>${subtotal.toFixed(2)}</td>
+                      <td>₹{subtotal.toFixed(2)}</td>
                     </tr>
                   </tbody>
                 </table>

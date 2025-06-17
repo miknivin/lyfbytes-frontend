@@ -7539,3 +7539,15 @@ ul.meal-items.style-two li {
   color: #000; /* Adjust color as needed */
   font-size: 16px;
 }
+
+@media (max-width: 767px) {
+  .feature-product-item h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .feature-product-item a {
+    padding: 20px;
+  }
+}

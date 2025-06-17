@@ -147,7 +147,7 @@ const BannerV4 = () => {
                         Purchase today. just <strong>$58</strong>
                       </h4> */}
                       <h2 className="slide-head">
-                        LIFE BYTES <br /> POPCORN
+                        LIFE BYTES <br /> JACKFRUIT CHIPS
                       </h2>
                       <p>
                         Plan upon yet way get cold spot its week. Almost do am
