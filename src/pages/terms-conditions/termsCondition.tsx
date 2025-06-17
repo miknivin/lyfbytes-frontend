@@ -184,7 +184,7 @@ export default function TermsConditionsPage() {
                   9. Contact Us
                 </h3>
                 <p>
-                  For questions, complaints, or inquiries about these Terms or
+                  For questions, complaints, or enquiries about these Terms or
                   our services, please contact us at:
                 </p>
                 <p style={{ fontSize: "1em", color: "#666", marginBottom: 20 }}>

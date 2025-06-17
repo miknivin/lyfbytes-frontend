@@ -48,6 +48,7 @@ import DeliveryReturnPage from "./pages/delivery-return/DeliveryReturnPage";
 import TermsConditionsPage from "./pages/terms-conditions/termsCondition";
 import MyAccountPage from "./pages/my-account/MyAccount";
 import ProfileEdit from "./components/dashboard/AccountEdit";
+import ShippingDeliveryPolicyPage from "./pages/ShippingDeliveryPolicy/ShippingDeliveryPolicy";
 
 const Routers = () => {
   return (
@@ -66,6 +67,7 @@ const Routers = () => {
         <Route path="/home-5-dark" element={<Home5DarkPage />} />
         <Route path="/home-6-dark" element={<Home6DarkPage />} />
         <Route path="/delivery-return" element={<DeliveryReturnPage />} />
+        <Route path="/shipping" element={<ShippingDeliveryPolicyPage />} />
         <Route path="/terms-conditions" element={<TermsConditionsPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/chef" element={<ChefPage />} />

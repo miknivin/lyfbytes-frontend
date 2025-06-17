@@ -65,6 +65,9 @@ const FooterV1 = () => {
                   <li>
                     <Link to="/delivery-return">Return and Refund</Link>
                   </li>
+                  <li>
+                    <Link to="/shipping">Shipping</Link>
+                  </li>
                 </ul>
               </div>
             </div>
