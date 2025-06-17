@@ -12,7 +12,7 @@ const FeatureV2 = () => {
           <img src={shape10} alt="Image Not Found" />
         </div>
         <div className="container">
-          <div className="row gap-3">
+          <div className="row gap-3 gap-md-0">
             {/* Single item */}
             <div className="col-lg-5 feature-product-item">
               <Link
