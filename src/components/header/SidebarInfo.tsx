@@ -43,6 +43,16 @@ const SidebarInfo: React.FC<HeaderSearchProps> = ({
     toast.error("Product removed from cart");
   };
 
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    setShowLoginModal(true);
+    // Programmatically navigate to add query parameter
+    navigate({
+      pathname: window.location.pathname, // Keep the current path
+      search: "?toMyAccount=true", // Add query parameter
+    });
+  };
+
   const handleLogout = async () => {
     try {
       await logout(null).unwrap();
@@ -82,7 +92,7 @@ const SidebarInfo: React.FC<HeaderSearchProps> = ({
                 <Link
                   to="#"
                   className="dropdown-toggle"
-                  onClick={() => setShowLoginModal(true)}
+                  onClick={(e: any) => handleClick(e)}
                 >
                   <i className="far fa-user" />
                 </Link>

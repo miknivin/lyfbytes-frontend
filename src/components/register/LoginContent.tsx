@@ -23,6 +23,8 @@ const LoginContent = () => {
     e.preventDefault();
     const { email, password } = formData;
     setIsLoading(true);
+    const queryParams = new URLSearchParams(location.search);
+    const toMyAccount = queryParams.get("toMyAccount") === "true";
 
     try {
       const response = await login({ email, password }).unwrap();
@@ -42,7 +44,9 @@ const LoginContent = () => {
           text: "You have successfully logged in!",
           confirmButtonColor: "#3085d6",
         });
-        navigate("/my-account");
+        if (toMyAccount) {
+          navigate("/my-account");
+        }
       } else {
         Swal.fire({
           icon: "error",
