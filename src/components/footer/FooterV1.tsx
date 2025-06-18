@@ -13,7 +13,7 @@ const FooterV1 = () => {
             <div className="col-lg-3 col-md-6 footer-item mt-50">
               <div className="f-item about">
                 <img
-                  style={{ height: "61px" }}
+                  style={{ height: "100px" }}
                   src={logo1}
                   alt="Image Not Found"
                 />
@@ -100,7 +100,7 @@ const FooterV1 = () => {
                       <i className="fas fa-envelope" />
                     </div>
                     <div className="content">
-                      <a href="mailto:name@email.com">gm@lifefoods.in</a>
+                      <a href="mailto:gm@lifefoods.in">gm@lifefoods.in</a>
                     </div>
                   </li>
                 </ul>
