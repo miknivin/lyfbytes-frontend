@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
 import ShopSingleTab from "./ShopSingleTab";
 import RatingsStar from "../utilities/RatingsStar";
+import ProductImageGallery from "./ProductImageGallery";
 
 // Define interfaces for TypeScript
 interface Variant {
@@ -127,19 +128,7 @@ const ShopSingleThumbContent = ({ productInfo }: { productInfo: DataType }) => {
               <div className="product-thumb">
                 <div className="item-box">
                   <div className="product-item">
-                    <img
-                      src={thumb}
-                      alt={name || "Product"}
-                      width={450}
-                      height={450}
-                    />
-                    <span
-                      className={
-                        badge === "" || !badge ? "d-none" : "onsale theme"
-                      }
-                    >
-                      {badge ?? "-16%"}
-                    </span>
+                    <ProductImageGallery images={images} />
                   </div>
                 </div>
               </div>

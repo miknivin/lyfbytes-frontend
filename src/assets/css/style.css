@@ -7551,3 +7551,13 @@ ul.meal-items.style-two li {
     padding: 20px;
   }
 }
+
+.image-active {
+  border: var(--color-primary) 2px solid;
+}
+
+@media (max-width: 991.98px) {
+  .image-item {
+    max-width: 85px;
+  }
+}

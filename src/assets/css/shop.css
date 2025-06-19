@@ -792,7 +792,7 @@ nav.woocommerce-pagination {
 }
 
 .product-details .product-thumb .product-item {
-  padding: 50px;
+  padding: 8px;
   background: var(--bg-gray);
   position: relative;
 }
