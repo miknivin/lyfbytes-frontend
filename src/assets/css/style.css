@@ -78,10 +78,11 @@ Sidebar heading:  22px 'Jost', sans-serif
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
-
+/* font before */
+/* --font-heading: "Oswald", sans-serif; */
 /* Varialbes */
 :root {
-  --font-default: "Jost", sans-serif;
+  --font-default: "Open Sans", sans-serif;
   --font-heading: "Open Sans", sans-serif;
   --font-optional: "Dancing Script", cursive;
   --fontawesome: "Font Awesome 5 Pro";
