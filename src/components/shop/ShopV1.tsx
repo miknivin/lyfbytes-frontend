@@ -106,7 +106,7 @@ const ShopV1 = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <ul className="vt-products columns-4">
+            <ul className="vt-products columns-4 d-flex align-items-stretch">
               {allProducts.map((product, index) => (
                 <SingleShopV1 product={product} key={product?._id || index} />
               ))}

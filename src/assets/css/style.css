@@ -73,8 +73,8 @@ Sidebar heading:  22px 'Jost', sans-serif
 
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
@@ -82,7 +82,7 @@ Sidebar heading:  22px 'Jost', sans-serif
 /* Varialbes */
 :root {
   --font-default: "Jost", sans-serif;
-  --font-heading: "Oswald", sans-serif;
+  --font-heading: "Open Sans", sans-serif;
   --font-optional: "Dancing Script", cursive;
   --fontawesome: "Font Awesome 5 Pro";
   --black: #000000;
@@ -3414,6 +3414,12 @@ a.btn-round-animation.dark {
 
 .banner-area div {
   height: 100vh;
+}
+
+@media (min-width: 1024px) {
+  .banner-area div {
+    height: 110vh;
+  }
 }
 
 .banner-area div.swiper-slide .row div {

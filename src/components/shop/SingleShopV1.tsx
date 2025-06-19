@@ -190,7 +190,7 @@ const SingleShopV1 = ({ product }: { product: DataType }) => {
   return (
     <>
       <li className="product">
-        <div className="product-contents">
+        <div className="product-contents h-100 d-flex flex-column justify-content-evenly">
           <div className="product-image">
             <span className={badge === "" || !badge ? "d-none" : "onsale"}>
               {badge}

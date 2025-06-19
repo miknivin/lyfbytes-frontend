@@ -35,7 +35,7 @@ const BannerV4 = () => {
           speed={3000}
           autoplay={{
             delay: 5000,
-            disableOnInteraction: false,
+            disableOnInteraction: true,
           }}
           effect={"fade"}
           fadeEffect={{

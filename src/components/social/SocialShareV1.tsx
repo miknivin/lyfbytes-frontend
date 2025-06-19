@@ -24,7 +24,7 @@ const SocialShareV1 = () => {
       <li>
         <Link
           className="bg-light p-2 text-dark rounded-circle d-flex justify-content-center align-items-center"
-          to="https://www.linkedin.com"
+          to="https://www.facebook.com/lifexbytes/"
           target="_blank"
         >
           <i className="fab fa-facebook"></i>
