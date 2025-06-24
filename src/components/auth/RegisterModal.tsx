@@ -1,18 +1,22 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useRegisterMutation } from "../../store/api/authApi";
 import { setUser } from "../../store/features/userSlice";
+import GoogleSigninButton from "./SignInWithGoogle";
 
 interface RegisterModalProps {
   setShowRegisterModal: (show: boolean) => void;
   setShowLoginModal: (show: boolean) => void;
+  onRegisterSuccess?: () => void;
 }
 
 const RegisterModal: React.FC<RegisterModalProps> = ({
   setShowRegisterModal,
   setShowLoginModal,
+  onRegisterSuccess,
 }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -22,6 +26,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [register, { isLoading: isRegisterLoading, error: registerError }] =
     useRegisterMutation();
 
@@ -56,7 +61,15 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
       );
       toast.success("Registration successful!");
       setShowRegisterModal(false);
-      navigate("/my-account");
+      if (onRegisterSuccess) {
+        onRegisterSuccess();
+      }
+      const toMyAccount = searchParams.get("toMyAccount");
+      if (toMyAccount === "true" && !onRegisterSuccess) {
+        setTimeout(() => {
+          navigate("/my-account");
+        }, 100);
+      }
     } catch (error: any) {
       console.error("Registration error:", error);
       toast.error(error.data?.error || "Registration failed");
@@ -146,19 +159,21 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
               </button>
             </form>
             <div className="mt-3 text-center">
-              {/* <h6 className="mb-2">Or Register With</h6> */}
-              {/* <ul className="list-inline">
+              <h6 className="mb-2">Or Register With</h6>
+              <ul className="list-inline">
                 <li className="list-inline-item">
-                  <Link to="#" className="btn btn-outline-primary">
-                    <i className="fab fa-google me-2"></i> Google
-                  </Link>
+                  <GoogleSigninButton
+                    setShowLoginModal={setShowLoginModal}
+                    setShowRegisterModal={setShowRegisterModal}
+                    onSuccess={onRegisterSuccess}
+                  />
                 </li>
-                <li className="list-inline-item">
+                {/* <li className="list-inline-item">
                   <Link to="#" className="btn btn-outline-primary">
                     <i className="fab fa-facebook-f me-2"></i> Facebook
                   </Link>
-                </li>
-              </ul> */}
+                </li> */}
+              </ul>
               <p className="mt-2">
                 Already have an account?{" "}
                 <button

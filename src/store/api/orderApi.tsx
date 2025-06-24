@@ -127,6 +127,12 @@ export const orderApi = createApi({
         };
       },
     }),
+    deleteSessionOrder: builder.mutation({
+      query: (sessionOrderId) => ({
+        url: `/payments/session/${sessionOrderId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -146,4 +152,5 @@ export const {
   useCheckCouponMutation,
   useApplyCouponMutation,
   useUploadKidsImageMutation,
+  useDeleteSessionOrderMutation,
 } = orderApi;

@@ -1344,7 +1344,7 @@ nav.navbar.validnavs.navbar-fixed.no-background {
 
 nav.navbar.validnavs {
   z-index: 100;
-  padding: 10px 0;
+  padding: 0px 0;
 }
 
 nav.navbar.validnavs.attr-border-full,

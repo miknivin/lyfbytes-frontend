@@ -30,7 +30,7 @@ const SidebarInfo: React.FC<HeaderSearchProps> = ({
   const [logout] = useLogoutMutation();
 
   const totalItems = cartItems.reduce(
-    (sum, item) => sum + (item.quantity || 0),
+    (sum: any, item: any) => sum + (item.quantity || 0),
     0
   );
   const totalAmount = cartItems.reduce(

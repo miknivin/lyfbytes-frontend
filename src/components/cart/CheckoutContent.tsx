@@ -3,10 +3,24 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { toast } from "react-toastify";
-import { useRef, useState } from "react";
-import { useCreateNewOrderMutation } from "../../store/api/orderApi";
+import { useEffect, useRef, useState } from "react";
+import {
+  useCreateNewOrderMutation,
+  useDeleteSessionOrderMutation,
+  useRazorpayCheckoutSessionMutation,
+  useRazorpayWebhookMutation,
+} from "../../store/api/orderApi";
 import { clearCart } from "../../store/features/cartSlice";
 import { useNavigate } from "react-router-dom";
+import LoginModal from "../auth/LoginModal";
+import RegisterModal from "../auth/RegisterModal";
+
+// Add Razorpay type to window object
+// declare global {
+//   interface Window {
+//     Razorpay: any;
+//   }
+// }
 
 interface FormEventHandler {
   (event: React.FormEvent<HTMLFormElement>): void;
@@ -26,13 +40,26 @@ const CheckoutContent = () => {
     email: "",
     orderNotes: "",
   });
-  const [paymentMethod, setPaymentMethod] = useState<"COD" | "Online">("COD");
+  const [paymentMethod, setPaymentMethod] = useState<"COD" | "Online">(
+    "Online"
+  );
   const isAuthenticated = useSelector(
     (state: RootState) => state.user.isAuthenticated
   );
+  const [loginCallback, setLoginCallback] = useState<(() => void) | null>(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [registerCallback, setRegisterCallback] = useState<(() => void) | null>(
+    null
+  );
+  const [razorpayCheckoutSession, { isLoading: isSessionLoading }] =
+    useRazorpayCheckoutSessionMutation();
+  const [deleteSessionOrder] = useDeleteSessionOrderMutation();
+  const [razorpayWebhook] = useRazorpayWebhookMutation();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const [createNewOrder, { isLoading }] = useCreateNewOrderMutation();
+  const [createNewOrder] = useCreateNewOrderMutation();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const subtotal = cartItems.reduce(
     (total: number, item: { price: number; quantity: number }) =>
@@ -91,27 +118,26 @@ const CheckoutContent = () => {
   const handleForm: FormEventHandler = async (event) => {
     event.preventDefault();
     if (!validateForm()) return;
-    if (!isAuthenticated) {
-      toast.error("You need to login to place order");
-      return;
-    }
-    try {
+
+    const placeOrder = async () => {
+      setIsLoading(true);
+
       const orderData = {
         orderItems: cartItems.map((item) => ({
           product: item.product,
           name: item.name,
-          price: item.price,
+          price: item.price.toString(),
           quantity: item.quantity,
           image: item.image,
         })),
         shippingInfo: {
-          name: `${formData.firstName} ${formData.lastName}`,
+          fullName: `${formData.firstName} ${formData.lastName}`,
           address: formData.streetAddress,
           email: formData.email,
           state: formData.stateCounty,
           city: formData.townCity,
           phoneNo: formData.phone,
-          pinCode: formData.postcode,
+          zipCode: formData.postcode,
           country: formData.country,
         },
         itemsPrice: subtotal,
@@ -121,29 +147,174 @@ const CheckoutContent = () => {
         paymentMethod,
         paymentInfo: {},
         orderNotes: formData.orderNotes,
+        couponApplied: null,
       };
 
-      const result = await createNewOrder(orderData).unwrap();
-      toast.success("Order placed successfully!");
-      dispatch(clearCart());
-      setFormData({
-        firstName: "",
-        lastName: "",
-        country: "IN",
-        streetAddress: "",
-        streetAddress2: "",
-        townCity: "",
-        stateCounty: "",
-        postcode: "",
-        phone: "",
-        email: "",
-        orderNotes: "",
-      });
-      navigate("/orders");
-    } catch (error: any) {
-      toast.error(error?.data?.message || "Failed to place order");
+      try {
+        if (paymentMethod === "COD") {
+          const result = await createNewOrder(orderData).unwrap();
+          toast.success("Order placed successfully!");
+          dispatch(clearCart());
+          setFormData({
+            firstName: "",
+            lastName: "",
+            country: "IN",
+            streetAddress: "",
+            streetAddress2: "",
+            townCity: "",
+            stateCounty: "",
+            postcode: "",
+            phone: "",
+            email: "",
+            orderNotes: "",
+          });
+          navigate("/orders");
+        } else if (paymentMethod === "Online") {
+          const sessionData = {
+            orderData: {
+              itemsPrice: subtotal,
+              shippingInfo: {
+                fullName: `${formData.firstName} ${formData.lastName}`,
+                address: formData.streetAddress,
+                email: formData.email,
+                state: formData.stateCounty,
+                city: formData.townCity,
+                phoneNo: formData.phone,
+                zipCode: formData.postcode,
+                country: formData.country,
+              },
+              orderItems: cartItems.map((item) => ({
+                product: item.product,
+                name: item.name,
+                price: item.price.toString(),
+                quantity: item.quantity,
+                image: item.image,
+              })),
+            },
+          };
+
+          const response = await razorpayCheckoutSession(sessionData).unwrap();
+          const { id: order_id, amount, currency, sessionOrderId } = response;
+
+          if (!(window as any).Razorpay) {
+            toast.error("Razorpay SDK failed to load. Please try again.");
+            setIsLoading(false);
+            return;
+          }
+
+          const options = {
+            key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+            amount: amount,
+            currency: currency,
+            name: "Lyf Bytes",
+
+            description: "Order Payment",
+            order_id: order_id,
+            handler: async function (response: {
+              razorpay_payment_id: string;
+              razorpay_order_id: string;
+              razorpay_signature: string;
+            }) {
+              const webhookData = {
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_signature: response.razorpay_signature,
+                sessionOrderId,
+                shippingInfo: orderData.shippingInfo,
+                cartItems: orderData.orderItems,
+                itemsPrice: orderData.itemsPrice,
+                shippingPrice: orderData.shippingAmount,
+                totalPrice: orderData.totalAmount,
+                taxPrice: orderData.taxAmount,
+                orderNotes: orderData.orderNotes,
+                couponApplied: orderData.couponApplied,
+              };
+
+              try {
+                await razorpayWebhook(webhookData).unwrap();
+                const orderDataWithPayment = {
+                  ...orderData,
+                  paymentInfo: {
+                    id: response.razorpay_payment_id,
+                    status: "Paid",
+                  },
+                };
+                toast.success("Payment successful and order placed!");
+
+                deleteSessionOrder(sessionOrderId)
+                  .unwrap()
+                  .then(() =>
+                    console.log("SessionStartedOrder deleted successfully")
+                  )
+                  .catch((deleteError) =>
+                    console.error(
+                      "Failed to delete SessionStartedOrder:",
+                      deleteError
+                    )
+                  );
+
+                dispatch(clearCart());
+                setFormData({
+                  firstName: "",
+                  lastName: "",
+                  country: "IN",
+                  streetAddress: "",
+                  streetAddress2: "",
+                  townCity: "",
+                  stateCounty: "",
+                  postcode: "",
+                  phone: "",
+                  email: "",
+                  orderNotes: "",
+                });
+                navigate("/orders");
+              } catch (error) {
+                toast.error("Payment verification failed");
+              }
+            },
+            prefill: {
+              name: `${formData.firstName} ${formData.lastName}`,
+              email: formData.email,
+              contact: formData.phone,
+            },
+            theme: {
+              color: "#ed1c24",
+            },
+          };
+
+          const rzp = new (window as any).Razorpay(options);
+          rzp.on("payment.failed", function (response: any) {
+            console.log(response);
+            toast.error("Payment failed. Please try again.");
+          });
+          rzp.open();
+        }
+      } catch (error) {
+        toast.error((error as any)?.data?.message || "Failed to place order");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (!isAuthenticated) {
+      setShowLoginModal(true);
+      setLoginCallback(() => placeOrder);
+      setRegisterCallback(() => placeOrder);
+      return;
     }
+
+    await placeOrder();
   };
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="checkout-area default-padding">
@@ -381,7 +552,6 @@ const CheckoutContent = () => {
                       type="radio"
                       name="paymentMethod"
                       id="payOnline"
-                      disabled
                       value="Online"
                       checked={paymentMethod === "Online"}
                       onChange={handlePaymentMethodChange}
@@ -423,15 +593,33 @@ const CheckoutContent = () => {
                   type="button"
                   onClick={() => formRef.current?.requestSubmit()}
                   className="btn btn-primary mt-3"
-                  disabled={isLoading || cartItems.length === 0}
+                  disabled={
+                    isLoading || isSessionLoading || cartItems.length === 0
+                  }
                 >
-                  {isLoading ? "Processing..." : "Place Order"}
+                  {isLoading || isSessionLoading
+                    ? "Processing..."
+                    : "Place Order"}
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      {showLoginModal && (
+        <LoginModal
+          setShowLoginModal={setShowLoginModal}
+          setShowRegisterModal={setShowRegisterModal}
+          onLoginSuccess={loginCallback || undefined}
+        />
+      )}
+      {showRegisterModal && (
+        <RegisterModal
+          setShowRegisterModal={setShowRegisterModal}
+          setShowLoginModal={setShowLoginModal}
+          onRegisterSuccess={registerCallback || undefined}
+        />
+      )}
     </div>
   );
 };

@@ -36,7 +36,10 @@ const TestimonialV2 = ({ isDark, hasBg, sectionClass }: DataType) => {
                 className="testimonial-style-one-carousel"
                 direction={"horizontal"}
                 loop={true}
-                autoplay={true}
+                autoplay={{
+                  delay: 5000,
+                  disableOnInteraction: false,
+                }}
                 pagination={{
                   el: ".swiper-pagination",
                   type: "bullets",

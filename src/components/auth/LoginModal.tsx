@@ -1,23 +1,28 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../../store/api/authApi";
 import { setUser, setIsAuthenticated } from "../../store/features/userSlice";
+import GoogleSigninButton from "./SignInWithGoogle";
 
 interface LoginModalProps {
   setShowLoginModal: (show: boolean) => void;
   setShowRegisterModal: (show: boolean) => void;
+  onLoginSuccess?: () => void;
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({
   setShowLoginModal,
   setShowRegisterModal,
+  onLoginSuccess,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [login, { isLoading: isLoginLoading, error: loginError }] =
     useLoginMutation();
 
@@ -38,9 +43,15 @@ const LoginModal: React.FC<LoginModalProps> = ({
         dispatch(setIsAuthenticated(true));
         toast.success("Login Successful");
         setShowLoginModal(false);
-        setTimeout(() => {
-          navigate("/my-account");
-        }, 0);
+        if (onLoginSuccess) {
+          onLoginSuccess();
+        }
+        const toMyAccount = searchParams.get("toMyAccount");
+        if (toMyAccount === "true" && !onLoginSuccess) {
+          setTimeout(() => {
+            navigate("/my-account");
+          }, 100);
+        }
       } else {
         toast.error("Login failed - invalid response");
       }
@@ -106,19 +117,21 @@ const LoginModal: React.FC<LoginModalProps> = ({
               </button>
             </form>
             <div className="mt-3 text-center">
-              {/* <h6 className="mb-2">Or Login With</h6>
-              <ul className="list-inline">
-                <li className="list-inline-item">
-                  <Link to="#" className="btn btn-outline-primary">
-                    <i className="fab fa-google me-2"></i> Google
-                  </Link>
+              <h6 className="mb-2">Or Login With</h6>
+              <ul>
+                <li>
+                  <GoogleSigninButton
+                    setShowLoginModal={setShowLoginModal}
+                    setShowRegisterModal={setShowRegisterModal}
+                    onSuccess={onLoginSuccess}
+                  />
                 </li>
-                <li className="list-inline-item">
+                {/* <li className="list-inline-item">
                   <Link to="#" className="btn btn-outline-primary">
                     <i className="fab fa-facebook-f me-2"></i> Facebook
                   </Link>
-                </li>
-              </ul> */}
+                </li> */}
+              </ul>
               <p className="mt-2">
                 Don't have an account?{" "}
                 <button

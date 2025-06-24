@@ -3417,11 +3417,11 @@ a.btn-round-animation.dark {
   height: 100vh;
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .banner-area div {
     height: 110vh;
   }
-}
+} */
 
 .banner-area div.swiper-slide .row div {
   height: auto;
@@ -4514,7 +4514,7 @@ a.btn-round-animation.dark {
 /* Banner Four */
 
 .banner-area.banner-style-four .content {
-  padding-top: 90px;
+  padding-top: 45px;
 }
 
 .banner-area.banner-style-four .swiper-slide.swiper-slide-active .thumb {
@@ -4536,12 +4536,12 @@ a.btn-round-animation.dark {
   left: 50%;
   content: "";
   height: 500%;
-  width: 60%;
+  width: 52%;
   background: var(--color-primary);
   bottom: -100%;
   z-index: -1;
   transform: translateX(-50%);
-  left: 257px;
+  left: 260px;
 }
 
 .banner-style-four .thumb img:nth-child(2) {
@@ -4552,7 +4552,7 @@ a.btn-round-animation.dark {
 }
 
 .banner-style-four h2 {
-  font-size: 72px;
+  font-size: 52px;
   text-transform: uppercase;
 }
 
@@ -4814,6 +4814,19 @@ a.btn-round-animation.dark {
   margin-left: 150px;
   position: relative;
   padding-left: 50px;
+}
+
+@media (max-width: 767px) {
+  .about-style-one-info .content {
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .fun-fact-style-one-items h2 {
+    font-size: 55px !important;
+  }
 }
 
 .about-style-one-info .content::after {
@@ -5212,7 +5225,7 @@ ul.launch-time li {
 }
 
 .feature-product-item h2 {
-  font-size: 60px;
+  font-size: 50px;
   text-transform: uppercase;
 }
 
@@ -7049,6 +7062,12 @@ ul.meal-items.style-two li {
   line-height: 1.5;
 }
 
+@media (max-width: 767px) {
+  .testimonial-style-one .content p {
+    font-size: 20px;
+  }
+}
+
 .tm-proivder-thumb {
   margin-top: 50px;
   margin-left: 50px;
@@ -7549,7 +7568,7 @@ ul.meal-items.style-two li {
 
 @media (max-width: 767px) {
   .feature-product-item h2 {
-    font-size: 36px;
+    font-size: 30px;
   }
 }
 
@@ -7566,5 +7585,31 @@ ul.meal-items.style-two li {
 @media (max-width: 991.98px) {
   .image-item {
     max-width: 85px;
+  }
+}
+
+.btn-danger-theme {
+  background: transparent !important;
+  color: #000 !important;
+  border: 1px solid #ccc !important;
+}
+
+.btn-danger-theme::after {
+  background: transparent !important;
+}
+
+.btn-danger-theme:hover {
+  background: transparent !important;
+  border: 1px solid var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+.thumb img {
+  max-height: 630px;
+}
+
+@media (min-width: 768px) {
+  .thumb img {
+    padding-top: 30px;
   }
 }

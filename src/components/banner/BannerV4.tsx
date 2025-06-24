@@ -33,10 +33,10 @@ const BannerV4 = () => {
           direction={"horizontal"}
           loop={true}
           speed={3000}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: true,
-          }}
+          // autoplay={{
+          //   delay: 5000,
+          //   disableOnInteraction: true,
+          // }}
           effect={"fade"}
           fadeEffect={{
             crossFade: true,
@@ -51,7 +51,7 @@ const BannerV4 = () => {
             prevEl: ".swiper-button-prev",
           }}
           className="banner-fade"
-          modules={[Keyboard, Pagination, Navigation, EffectFade, Autoplay]}
+          modules={[Keyboard, Pagination, Navigation, EffectFade]}
         >
           <div className="swiper-wrapper">
             {/* Single Item */}
