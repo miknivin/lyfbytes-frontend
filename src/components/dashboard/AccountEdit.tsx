@@ -69,7 +69,7 @@ const ProfileEdit = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <label htmlFor="emailInput" className="form-label">
               Email address
             </label>
@@ -84,7 +84,7 @@ const ProfileEdit = () => {
               onChange={handleChange}
               autoComplete="email"
             />
-          </div>
+          </div> */}
           <div className="mb-3">
             <label htmlFor="phoneInput" className="form-label">
               Phone

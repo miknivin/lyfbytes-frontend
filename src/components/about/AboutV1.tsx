@@ -25,7 +25,7 @@ const AboutV1 = () => {
                       <i className="fa fa-phone" />
                     </div>
                     <div className="info">
-                      <span>HOTLINE 24/7</span>
+                      <span>Contact us</span>
                       <h4>9847004200</h4>
                     </div>
                   </a>

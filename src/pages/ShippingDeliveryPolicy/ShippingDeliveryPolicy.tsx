@@ -11,9 +11,7 @@ const ShippingDeliveryPolicyPage = () => {
               <h4 className="sub-heading">Our Commitment</h4>
               <h2 className="title">Ensuring Timely and Reliable Delivery</h2>
               <section className="mb-8">
-                <h3 className="text-xl font-semibold text-white mb-4">
-                  1. Introduction
-                </h3>
+                <h3 className="text-xl font-semibold mb-4">1. Introduction</h3>
                 <p>
                   At lyf bites, we strive to provide a seamless shopping
                   experience, including efficient and reliable shipping. We
@@ -67,7 +65,7 @@ const ShippingDeliveryPolicyPage = () => {
                 <p style={{ fontSize: "1em", color: "#666", marginBottom: 20 }}>
                   <b>Email: </b>gm@lifefoods.in
                   <br />
-                  <b>Phone: </b>++91 9847004200
+                  <b>Phone: </b>+91 9847004200
                   <br />
                   <b>Address: </b>Lyf Bytes, c/o LIFEX FOODS INDIA PRIVATE
                   LIMITED, Building No. 47/1576/865, Pallithottam Junction,

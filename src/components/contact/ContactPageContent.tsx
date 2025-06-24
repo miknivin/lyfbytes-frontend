@@ -18,6 +18,9 @@ const ContactPageContent = () => {
                         {/* <div className="icon">
                           <i className="fas fa-phone-alt" />
                         </div> */}
+                        <div className="icon">
+                          <i className="fas fa-phone-alt" />
+                        </div>
                         <div className="content">
                           <h5 className="title">Contact number</h5>
                           <a href="phone:9847004200">9847004200</a>
@@ -43,7 +46,7 @@ const ContactPageContent = () => {
                         </div> */}
                         <div className="info">
                           <h5 className="title">Official Email</h5>
-                          <a href="mailto:info@agrul.com">gm@lifefoods.in</a>
+                          <a href="gm@lifefoods.in">gm@lifefoods.in</a>
                         </div>
                       </li>
                     </ul>

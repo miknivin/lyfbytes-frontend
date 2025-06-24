@@ -164,7 +164,7 @@ const DeliveryReturnPage = () => {
               </section> */}
               <section className="mb-8">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  8. Contact Us
+                  Contact Us
                 </h3>
                 <p>
                   For questions, concerns, or return requests regarding this

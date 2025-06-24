@@ -190,7 +190,7 @@ export default function TermsConditionsPage() {
                 <p style={{ fontSize: "1em", color: "#666", marginBottom: 20 }}>
                   <b>Email: </b>gm@lifefoods.in
                   <br />
-                  <b>Phone: </b>++91 9847004200
+                  <b>Phone: </b>+91 9847004200
                   <br />
                   <b>Address: </b>Lyf Bytes, c/o LIFEX FOODS INDIA PRIVATE
                   LIMITED, Building No. 47/1576/865, Pallithottam Junction,
