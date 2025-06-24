@@ -39,8 +39,8 @@ const ProfileEdit = () => {
     try {
       await updateProfile({
         name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
       }).unwrap(); // unwrap() throws an error if the request fails
 
       toast.success("Profile updated successfully!");
