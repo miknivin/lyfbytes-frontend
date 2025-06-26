@@ -13,7 +13,7 @@ const ShippingDeliveryPolicyPage = () => {
               <section className="mb-8">
                 <h3 className="text-xl font-semibold mb-4">1. Introduction</h3>
                 <p>
-                  At lyf bites, we strive to provide a seamless shopping
+                  At life bytes, we strive to provide a seamless shopping
                   experience, including efficient and reliable shipping. We
                   partner with trusted third-party delivery services to ensure
                   your orders reach you safely and on time.
