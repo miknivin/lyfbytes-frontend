@@ -90,8 +90,8 @@ const ShopV1 = () => {
   return (
     <div className="validtheme-shop-area default-padding text-center">
       <div className="shape-seperate">
-        <img style={{ opacity: 0.4 }} src={shape29} alt="lyfbites" />
-        <img style={{ opacity: 0.3 }} src={shape30} alt="lyfbytes" />
+        <img style={{ opacity: 0.4 }} src={shape29} alt="life bites" />
+        <img style={{ opacity: 0.3 }} src={shape30} alt="life bites" />
       </div>
       <div className="container">
         <div className="row">

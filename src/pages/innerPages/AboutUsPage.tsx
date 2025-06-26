@@ -10,7 +10,7 @@ const AboutUsPage = () => {
     <>
       <LayoutV5 breadCrumb="about-us" title="About Us">
         <AboutV1 />
-        <BrandV1 />
+        {/* <BrandV1 /> */}
         <FactV1 />
         {/* <ChefV1 sectionClass="bg-gray" /> */}
         <TestimonialV2 hasBg={true} />

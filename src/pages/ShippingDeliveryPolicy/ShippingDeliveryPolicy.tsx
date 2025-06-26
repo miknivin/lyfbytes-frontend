@@ -67,7 +67,7 @@ const ShippingDeliveryPolicyPage = () => {
                   <br />
                   <b>Phone: </b>+91 9847004200
                   <br />
-                  <b>Address: </b>Lyf Bytes, c/o LIFEX FOODS INDIA PRIVATE
+                  <b>Address: </b>Life Bytes, c/o LIFEX FOODS INDIA PRIVATE
                   LIMITED, Building No. 47/1576/865, Pallithottam Junction,
                   Pallithottam P.O., Kollam-691006, Kerala, India
                 </p>

@@ -12,7 +12,7 @@ const DeliveryReturnPage = () => {
 
               <h2 className="title">Returns and Refunds Policy</h2>
               <p>
-                Lyf Bytes, a subsidiary of Life Foods, accessible at
+                Life Bytes, a subsidiary of Life Foods, accessible at
                 lifefoods.in, is dedicated to your satisfaction with our snack
                 items. Due to the perishable nature of our products, this Return
                 and Refund Policy outlines specific conditions for returning
@@ -71,7 +71,7 @@ const DeliveryReturnPage = () => {
                   <li>
                     Package the product securely in its original, unopened
                     packaging and ship it back to us. For eligible returns
-                    (e.g., defective or incorrect items), Lyf Bytes will cover
+                    (e.g., defective or incorrect items), Life Bytes will cover
                     return shipping costs.
                   </li>
                 </ul>
@@ -174,7 +174,7 @@ const DeliveryReturnPage = () => {
                   <b>Email: </b>gm@lifefoods.in <br />
                   <b>Phone: </b>+91 9847004200
                   <br />
-                  <b>Address: </b>Lyf Bytes, c/o LIFEX FOODS INDIA PRIVATE
+                  <b>Address: </b>Life Bytes, c/o LIFEX FOODS INDIA PRIVATE
                   LIMITED, Building No. 47/1576/865, Pallithottam Junction,
                   Pallithottam P.O., Kollam-691006, Kerala, India
                 </p>

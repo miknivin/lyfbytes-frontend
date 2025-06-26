@@ -15,7 +15,7 @@ export default function TermsConditionsPage() {
                   1. Website Usage
                 </h3> */}
                 <p>
-                  Welcome to Lyf Bytes, a subsidiary of Life Foods, accessible
+                  Welcome to Life Bites, a subsidiary of Life Foods, accessible
                   at lifefoods.in. By using our website to purchase snack items,
                   you agree to these Terms and Conditions. Please read them
                   carefully.
@@ -29,9 +29,9 @@ export default function TermsConditionsPage() {
                 </h3>
                 <ul className="tag-list">
                   <li>
-                    All content on the Lyf Bytes website, including but not
+                    All content on the Life Bites website, including but not
                     limited to logos, product images, graphics, text, and
-                    designs, is owned by or licensed to Lyf Bytes or its parent
+                    designs, is owned by or licensed to Life Bites or its parent
                     company, Life Foods.
                   </li>
                   <li>
@@ -48,7 +48,7 @@ export default function TermsConditionsPage() {
                   2. Limitation of Liability
                 </h3>
                 <p>
-                  To the fullest extent permitted by law, Lyf Bytes, Life Foods,
+                  To the fullest extent permitted by law, Life Bites, Life Foods,
                   and their affiliates shall not be liable for any indirect,
                   incidental, special, or consequential damages arising from
                   your use of our website or products, including but not limited
@@ -79,7 +79,7 @@ export default function TermsConditionsPage() {
                 </h3>
                 <ul className="tag-list">
                   <li>
-                    All purchases on the Lyf Bytes website must be paid through
+                    All purchases on the Life Bites website must be paid through
                     approved payment methods, including credit cards, debit
                     cards, or digital wallets, as displayed at checkout.
                   </li>
@@ -126,7 +126,7 @@ export default function TermsConditionsPage() {
                 <ul className="tag-list">
                   <li>
                     To place an order, you must create and log in to a user
-                    account on the Lyf Bytes website.
+                    account on the Life Bites website.
                   </li>
                   <li>
                     You are responsible for maintaining the confidentiality of
@@ -134,7 +134,7 @@ export default function TermsConditionsPage() {
                     account
                   </li>
                   <li>
-                    Lyf Bytes reserves the right to suspend or terminate
+                    Life Bites reserves the right to suspend or terminate
                     accounts for violations of these terms, including providing
                     false information, unauthorized use, or fraudulent activity.
                   </li>
@@ -168,7 +168,7 @@ export default function TermsConditionsPage() {
                 </h3>
                 <ul className="tag-list">
                   <li>
-                    Lyf Bytes may update these Terms and Conditions from time to
+                    Life Bites may update these Terms and Conditions from time to
                     time. Changes will be posted on our website with an updated
                     “Last Updated” date.
                   </li>
@@ -192,7 +192,7 @@ export default function TermsConditionsPage() {
                   <br />
                   <b>Phone: </b>+91 9847004200
                   <br />
-                  <b>Address: </b>Lyf Bytes, c/o LIFEX FOODS INDIA PRIVATE
+                  <b>Address: </b>Life Bites, c/o LIFEX FOODS INDIA PRIVATE
                   LIMITED, Building No. 47/1576/865, Pallithottam Junction,
                   Pallithottam P.O., Kollam-691006, Kerala, India
                 </p>

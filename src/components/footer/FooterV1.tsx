@@ -130,7 +130,7 @@ const FooterV1 = () => {
             <div className="row align-center">
               <div className="col-lg-6">
                 <p>
-                  © Copyright {new Date().getFullYear()} LYFBITES. All Rights
+                  © Copyright {new Date().getFullYear()} Life Bytes. All Rights
                   Reserved
                 </p>
               </div>

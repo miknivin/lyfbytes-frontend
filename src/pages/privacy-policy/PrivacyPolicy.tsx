@@ -15,7 +15,7 @@ const PrivacyPolicyPage = () => {
                   Introduction
                 </h3>
                 <p>
-                  Lyf Bytes, a subsidiary of Life Foods, accessible at
+                  Life Bytes, a subsidiary of Life Foods, accessible at
                   lifefoods.in, is committed to protecting your privacy. This
                   Privacy Policy explains how we collect, use, share, and
                   protect your personal information when you use our website to

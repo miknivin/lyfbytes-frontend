@@ -207,7 +207,7 @@ const CheckoutContent = () => {
             key: import.meta.env.VITE_RAZORPAY_KEY_ID,
             amount: amount,
             currency: currency,
-            name: "Lyf Bytes",
+            name: "Life Bytes",
 
             description: "Order Payment",
             order_id: order_id,

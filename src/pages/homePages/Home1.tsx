@@ -23,7 +23,7 @@ const Home1 = () => {
       {/* <ChefV1 /> */}
       <TestimonialV2 hasBg={true} />
       {/* <GalleryV2 /> */}
-      <BrandV1 />
+      {/* <BrandV1 /> */}
       {/* <BlogV1 /> */}
       <FooterV1 />
     </>
