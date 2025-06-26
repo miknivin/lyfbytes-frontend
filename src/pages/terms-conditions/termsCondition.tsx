@@ -146,7 +146,7 @@ export default function TermsConditionsPage() {
                 </h3>
                 <ul className="tag-list">
                   <li>
-                    Any disputes arising from these Terms or your use of Lyf
+                    Any disputes arising from these Terms or your use of Life
                     Bytes’ website or products shall be resolved through
                     good-faith negotiation.
                   </li>
