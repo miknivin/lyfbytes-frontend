@@ -248,8 +248,10 @@ const ShopSingleThumbContent = ({ productInfo }: { productInfo: DataType }) => {
                 </div>
                 <div className="product-estimate-delivary">
                   <i className="fas fa-box-open" />
-                  <strong> 2-day Delivery</strong>
-                  <span>Speedy and reliable parcel delivery!</span>
+                  {/* <strong> 2-day Delivery</strong> */}
+                  <span className="p-0">
+                    Speedy and reliable parcel delivery!
+                  </span>
                 </div>
               </div>
             </div>
