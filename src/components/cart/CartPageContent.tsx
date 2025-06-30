@@ -92,7 +92,7 @@ const CartPageContent = () => {
                             </button>
                           </td>
                           <td className="product-thumbnail">
-                            <Link to={`/product/${item.product}`}>
+                            <Link to={`/shop-single-thumb/${item.product}`}>
                               <img
                                 src={
                                   item.image.startsWith("http")
@@ -108,7 +108,7 @@ const CartPageContent = () => {
                             </Link>
                           </td>
                           <td>
-                            <Link to={`/product/${item.product}`}>
+                            <Link to={`/shop-single-thumb/${item.product}`}>
                               {item.name}
                             </Link>
                           </td>

@@ -31,7 +31,10 @@ const ContactPageContent = () => {
                       <li>
                         <div className="info">
                           <h5 className="title fs-2">Official Email</h5>
-                          <a href="gm@lifefoods.in" className="fs-5 fw-100">
+                          <a
+                            href="mailto:gm@lifefoods.in"
+                            className="fs-5 fw-100"
+                          >
                             gm@lifefoods.in
                           </a>
                         </div>

@@ -152,7 +152,7 @@ const CheckoutContent = () => {
 
       try {
         if (paymentMethod === "COD") {
-          console.log(orderData, "orderdata");
+          //console.log(orderData, "orderdata");
           const result = await createNewOrder(orderData).unwrap();
           toast.success("Order placed successfully!");
           dispatch(clearCart());
