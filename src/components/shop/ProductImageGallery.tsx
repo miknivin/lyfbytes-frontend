@@ -25,6 +25,14 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({
     setIsLightboxOpen(true);
   };
 
+  const CLOUD_FRONT_BASE_URL = "https://d229x2i5qj11ya.cloudfront.net";
+  const transformImageUrl = (url: string) => {
+    if (url.includes("kids-bags.s3.eu-north-1.amazonaws.com")) {
+      const path = url.split("/uploads")[1]; // Extract path starting with /uploads
+      return `${CLOUD_FRONT_BASE_URL}/uploads${path}`;
+    }
+    return url; // Return original URL if no replacement needed
+  };
   return (
     <div className="container mt-4">
       <div className="row">
@@ -43,7 +51,7 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({
                 }}
               >
                 <img
-                  src={image.url}
+                  src={transformImageUrl(image.url)}
                   alt={`Thumbnail ${index + 1}`}
                   className="img-thumbnail"
                   style={{ width: "100%" }}
@@ -55,7 +63,7 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({
         <div className="col-12 col-md-9 p-2">
           <div className="card">
             <img
-              src={activeImage}
+              src={transformImageUrl(activeImage)}
               className="card-img-top"
               alt="Active Product Image"
               onClick={() =>

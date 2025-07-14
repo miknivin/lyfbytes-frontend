@@ -69,6 +69,7 @@ const ShopSingleThumbContent = ({ productInfo }: { productInfo: DataType }) => {
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(null);
 
+
   // Set the first variant with stock > 0 as default
   useEffect(() => {
     const firstAvailableVariant = variants.find((v) => v.stock > 0);
