@@ -1,3 +1,4 @@
+import SwiperBanner from "../../components/banner/SwiperBanner";
 import BannerV4 from "../../components/banner/BannerV4";
 import BlogV1 from "../../components/blog/BlogV1";
 import BrandV1 from "../../components/brand/BrandV1";
@@ -15,7 +16,7 @@ const Home1 = () => {
   return (
     <>
       <HeaderV2 />
-      <BannerV4 />
+      <SwiperBanner />
       {/* <MenuV5 /> */}
       <FeatureV2 />
       <ShopV1 />

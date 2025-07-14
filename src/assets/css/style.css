@@ -7613,3 +7613,93 @@ ul.meal-items.style-two li {
     padding-top: 30px;
   }
 }
+
+/* Scoped Pagination styles */
+.swiper-banner-container .swiper-pagination-bullet {
+  background: #ffffff !important;
+  border: 1px solid #000000 !important;
+  opacity: 0.7 !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: 0 5px !important;
+}
+
+.swiper-banner-container .swiper-pagination-bullet-active {
+  background: #ffffff !important;
+  border: 1px solid #000000 !important;
+  opacity: 1 !important;
+  border-radius: 30px;
+  width: 50px !important;
+}
+
+/* Scoped Navigation button styles */
+.swiper-banner-container .swiper-button-prev,
+.swiper-banner-container .swiper-button-next {
+  height: 60px !important;
+  width: 60px !important;
+  line-height: 60px !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--white, #ffffff) !important;
+  color: #fff !important;
+}
+
+.swiper-banner-container .swiper-button-prev::after,
+.swiper-banner-container .swiper-button-next::after {
+  font-size: 12px;
+}
+.swiper-banner-container .swiper-button-prev::after {
+  content: "prev";
+}
+
+.swiper-banner-container .swiper-button-next::after {
+  content: "next";
+}
+
+@media (min-width: 992px) {
+  .swiper-banner-container .swiper-slide img {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .swiper-banner-container .swiper-button-prev,
+  .swiper-banner-container .swiper-button-next {
+    height: 25px !important;
+    width: 25px !important;
+    font-size: 8px !important;
+    line-height: 25px !important;
+  }
+
+  .feature-style-two-area .btn.circle.btn-md.btn-light.animation {
+    font-size: 10px !important;
+    padding: 8px 10px !important;
+  }
+
+  .feature-style-two-area .btn-md {
+    padding: 8px 10px !important;
+    font-size: 10px !important;
+  }
+
+  .product-title {
+    font-size: 18px;
+  }
+}
+
+.shop-action {
+  right: 15px;
+}
+
+@media (min-width: 992px) {
+  .shop-action {
+    right: -5px;
+  }
+}
+
+.product-title a {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

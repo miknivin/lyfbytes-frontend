@@ -51,6 +51,15 @@ const SingleShopV1 = ({ product }: { product: DataType }) => {
     variants.find((v) => v.stock > 0)?.size || ""
   );
 
+  const CLOUD_FRONT_BASE_URL = "https://d229x2i5qj11ya.cloudfront.net";
+  const transformImageUrl = (url: string) => {
+    if (url.includes("kids-bags.s3.eu-north-1.amazonaws.com")) {
+      const path = url.split("/uploads")[1]; // Extract path starting with /uploads
+      return `${CLOUD_FRONT_BASE_URL}/uploads${path}`;
+    }
+    return url; // Return original URL if no replacement needed
+  };
+
   // Filter variants with stock > 0
   const availableVariants = variants.filter((variant) => variant.stock > 0);
 
@@ -65,7 +74,9 @@ const SingleShopV1 = ({ product }: { product: DataType }) => {
     ? displayVariant.actualPrice
     : undefined;
   const thumb =
-    images && images.length > 0 ? images[0].url : "/assets/img/placeholder.jpg";
+    images && images.length > 0
+      ? transformImageUrl(images[0].url)
+      : "/assets/img/placeholder.jpg";
   const isOutOfStock = availableVariants.length === 0;
 
   const handleAddToCart = (variantSize: string) => {
@@ -189,9 +200,9 @@ const SingleShopV1 = ({ product }: { product: DataType }) => {
 
   return (
     <>
-      <li className="product">
+      <li className="product h-100">
         <div className="product-contents h-100 d-flex flex-column justify-content-evenly">
-          <div className="product-image">
+          <div className="product-image position-relative">
             <span className={badge === "" || !badge ? "d-none" : "onsale"}>
               {badge}
             </span>
@@ -203,7 +214,10 @@ const SingleShopV1 = ({ product }: { product: DataType }) => {
                 height={450}
               />
             </Link>
-            <div className="shop-action">
+            <div
+              style={{ right: "15px" }}
+              className="shop-action position-absolute top-0"
+            >
               <ul>
                 <li className="cart">
                   <Link to="#" onClick={handleCartClick}>
@@ -239,7 +253,7 @@ const SingleShopV1 = ({ product }: { product: DataType }) => {
                 </p>
               )}
             </h4>
-            <div className="price">
+            <div className="price d-flex flex-wrap justify-content-center">
               {oldPrice !== undefined && (
                 <span>
                   <del>₹{oldPrice.toFixed(2)}</del>

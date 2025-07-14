@@ -106,19 +106,21 @@ const ShopV1 = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <ul className="vt-products columns-4 d-flex align-items-stretch">
+            <div
+              style={{ justifyContent: "stretch", alignItems: "stretch" }}
+              className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 d-flex"
+            >
               {allProducts.map((product, index) => (
-                <SingleShopV1 product={product} key={product?._id || index} />
+                <div className="col h-100" key={product?._id || index}>
+                  <SingleShopV1 product={product} />
+                </div>
               ))}
-            </ul>
+            </div>
             {/* Element to observe for triggering next page load */}
             {data?.filteredProducts?.length > 0 && (
               <div ref={loadMoreRef} style={{ height: "20px" }}></div>
             )}
             {isFetching && <p>Loading more products...</p>}
-            {/* {data?.filteredProducts?.length === 0 && (
-              <p>No more products to load.</p>
-            )} */}
           </div>
         </div>
       </div>

@@ -98,6 +98,12 @@ ul.vt-products.related-product-carousel {
   border: 1px solid #e7e7e7;
 }
 
+@media (max-width: 712.98px) {
+  .product .product-contents {
+    padding: 10px;
+  }
+}
+
 .swiper .product .product-contents {
   box-shadow: none;
   border: 1px solid #e7e7e7;
