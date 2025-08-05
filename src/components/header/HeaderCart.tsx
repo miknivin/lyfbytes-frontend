@@ -63,7 +63,6 @@ const HeaderCart = () => {
                       </li>
                     ))}
                   </ul>
-<<<<<<< HEAD
                   <li className="total mt-3 px-3 pb-3">
                     <div className="cart-total mb-3">
                       <span className="total-label">Total: </span>
@@ -79,21 +78,6 @@ const HeaderCart = () => {
     CHECKOUT
   </Link>
 </div>
-=======
-                  <li className="total mt-2 px-3">
-                    <span className="pull-right">
-                      <strong>Total</strong>: ${totalAmount.toFixed(2)}
-                    </span>
-                    <Link to="/cart" className="btn btn-default btn-cart mr-2">
-                      Cart
-                    </Link>
-                    <Link
-                      to="/checkout"
-                      className="btn btn-default btn-cart mr-2"
-                    >
-                      Checkout
-                    </Link>
->>>>>>> 508cf072dc1007e8242272efaf59cff9dea63dee
                   </li>
                 </>
               ) : (

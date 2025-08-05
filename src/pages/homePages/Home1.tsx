@@ -11,12 +11,9 @@ import HeaderV2 from "../../components/header/HeaderV2";
 import MenuV5 from "../../components/menu/MenuV5";
 import ShopV1 from "../../components/shop/ShopV1";
 import TestimonialV2 from "../../components/testimonial/TestimonialV2";
-<<<<<<< HEAD
 import BestSellers from "../../components/shop/BestSellers";
 import FoodFeatures from "../../components/features/FoodFeatures";
 import CategoriesGrid from "../../components/categories/CategoriesGrid";
-=======
->>>>>>> 508cf072dc1007e8242272efaf59cff9dea63dee
 
 const Home1 = () => {
   return (
@@ -25,12 +22,9 @@ const Home1 = () => {
       <SwiperBanner />
       {/* <MenuV5 /> */}
       <FeatureV2 />
-<<<<<<< HEAD
       <CategoriesGrid />
       <FoodFeatures />
       <BestSellers />
-=======
->>>>>>> 508cf072dc1007e8242272efaf59cff9dea63dee
       <ShopV1 />
       {/* <DiscountV1 /> */}
       {/* <ChefV1 /> */}
