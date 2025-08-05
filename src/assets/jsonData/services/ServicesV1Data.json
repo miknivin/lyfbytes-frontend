@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "icon": "flaticon-buffet",
+        "bgImage": "1.jpg",
+        "title": "Fine Dining",
+        "text": "Belonging sir curiosity discovery extremity yet forfeited prevailed own off. Travelling by introduced of mr terminated."
+    },
+    {
+        "id": 2,
+        "icon": "flaticon-champagne-glass",
+        "bgImage": "2.jpg",
+        "title": "Party and Event",
+        "text": "Belonging sir curiosity discovery extremity yet forfeited prevailed own off. Travelling by introduced of mr terminated."
+    },
+    {
+        "id": 3,
+        "icon": "flaticon-buffet",
+        "bgImage": "3.jpg",
+        "title": "Buffet",
+        "text": "Belonging sir curiosity discovery extremity yet forfeited prevailed own off. Travelling by introduced of mr terminated."
+    },
+    {
+        "id": 4,
+        "icon": "flaticon-moving-truck",
+        "bgImage": "4.jpg",
+        "title": "Home Delivery",
+        "text": "Belonging sir curiosity discovery extremity yet forfeited prevailed own off. Travelling by introduced of mr terminated."
+    }
+]

@@ -1,0 +1,101 @@
+/* Best Sellers Component Styles */
+.best-sellers-area {
+  padding: 80px 0;
+}
+
+.best-sellers-area .site-heading {
+  margin-bottom: 60px;
+}
+
+.best-sellers-area .site-heading .sub-title {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.best-sellers-area .site-heading .title {
+  font-size: 42px;
+  line-height: 52px;
+  margin-bottom: 20px;
+}
+
+/* Best Seller Card Styles */
+.best-seller-card {
+  transition: all 0.3s ease;
+}
+
+.best-seller-card .card {
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.best-seller-card .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.best-seller-card .card-body {
+  padding: 20px;
+}
+
+.best-seller-card .card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.best-seller-card .card-title a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.best-seller-card .card-title a:hover {
+  color: #dc3545;
+}
+
+.best-seller-card .badge {
+  font-size: 11px;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+
+.best-seller-card .btn {
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.best-seller-card .btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .best-sellers-area {
+    padding: 60px 0;
+  }
+  
+  .best-sellers-area .site-heading .title {
+    font-size: 32px;
+    line-height: 42px;
+  }
+  
+  .best-seller-card .card-body {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .best-sellers-area {
+    padding: 40px 0;
+  }
+  
+  .best-sellers-area .site-heading .title {
+    font-size: 28px;
+    line-height: 38px;
+  }
+}

@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "thumb": "1.jpg",
+        "delay": "100",
+        "tags": ["Mutton", "Olive Oil", "Salt"],
+        "name": "Pizza",
+        "price": 38,
+        "text": "Considered introduced themselves mr to discretion at. Means among saw hopes."
+    },
+    {
+        "id": 2,
+        "thumb": "2.jpg",
+        "delay": "200",
+        "tags": ["Atlantic", " chips", "tartare"],
+        "name": "Burger",
+        "price": 22,
+        "text": "Considered introduced themselves mr to discretion at. Means among saw hopes."
+    },
+    {
+        "id": 3,
+        "thumb": "3.jpg",
+        "delay": "400",
+        "tags": ["Ricotta", "goat cheese", "beetroot"],
+        "name": "Lemonade",
+        "price": 16,
+        "text": "Considered introduced themselves mr to discretion at. Means among saw hopes."
+    },
+    {
+        "id": 4,
+        "thumb": "4.jpg",
+        "delay": "600",
+        "tags": ["Ricotta", "goat cheese", "beetroot"],
+        "name": "Chicken Popeyes",
+        "price": 25,
+        "text": "Considered introduced themselves mr to discretion at. Means among saw hopes."
+    }
+]

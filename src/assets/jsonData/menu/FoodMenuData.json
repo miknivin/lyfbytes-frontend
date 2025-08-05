@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "thumb": "1.jpg",
+        "delay": "100",
+        "title": "Crispy Crust Pizzeria",
+        "text": "Considered introduced themselves mr to discretion at. Means among saw hopes.",
+        "tags": ["Mutton","Olive Oil","Salt"],
+        "price": 5.90,
+        "icon": "fa fa-heart",
+        "category": ["pancakes", "meat"]
+    },
+    {
+        "id": 2,
+        "thumb": "2.jpg",
+        "delay": "200",
+        "title": "Luger Burger",
+        "text": "Considered introduced themselves mr to discretion at. Means among saw hopes.",
+        "tags": ["Beef","Olive Oil","Salt"],
+        "price": 12.18,
+        "icon": "fa fa-heart",
+        "category": ["sandwiches", "vegetarian"]
+    },
+    {
+        "id": 3,
+        "thumb": "3.jpg",
+        "delay": "400",
+        "title": "Fries McDonald",
+        "text": "Considered introduced themselves mr to discretion at. Means among saw hopes.",
+        "tags": ["Chicken","Olive Oil","Salt"],
+        "price": 16.00,
+        "icon": "fa fa-heart",
+        "category": ["sandwiches", "brunch"]
+    },
+    {
+        "id": 4,
+        "thumb": "4.jpg",
+        "delay": "100",
+        "title": "Chicken Popeyes",
+        "text": "Considered introduced themselves mr to discretion at. Means among saw hopes.",
+        "tags": ["Mutton","Olive Oil","Salt"],
+        "price": 12.10,
+        "icon": "fa fa-heart",
+        "category": ["brunch"]
+    },
+    {
+        "id": 5,
+        "thumb": "5.jpg",
+        "delay": "200",
+        "title": "Chicken Sandwich",
+        "text": "Considered introduced themselves mr to discretion at. Means among saw hopes.",
+        "tags": ["Chicken","Olive Oil","Salt"],
+        "price": 11.50,
+        "icon": "fa fa-heart",
+        "category": ["meat", "pancakes"]
+    },
+    {
+        "id": 6,
+        "thumb": "6.jpg",
+        "delay": "400",
+        "title": "Salmon Steak",
+        "text": "Considered introduced themselves mr to discretion at. Means among saw hopes.",
+        "tags": ["Beef","Olive Oil","Salt"],
+        "price": 5.90,
+        "icon": "fa fa-heart",
+        "category": ["sandwiches", "vegetarian"]
+    }
+]
