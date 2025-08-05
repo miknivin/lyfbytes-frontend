@@ -74,7 +74,7 @@ const BestSellers = () => {
             <div className="site-heading text-center mb-5">
               <h4 className="sub-title text-primary text-uppercase fw-bold">Top Rated</h4>
               <h2 className="title text-dark fw-bold mb-3">Best Sellers</h2>
-              <p className="text-muted">Discover our most popular and highly-rated products loved by customers worldwide</p>
+              <p className="text-muted fs-6 fs-md-5">Discover our most popular and highly-rated products loved by customers worldwide</p>
             </div>
           </div>
         </div>

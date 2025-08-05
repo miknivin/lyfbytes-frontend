@@ -96,7 +96,7 @@ const CategoriesGrid: React.FC = () => {
             <div className="site-heading text-center">
               <h4 className="sub-title">Product Categories</h4>
               <h2 className="title">Explore Our Categories</h2>
-              <p>Discover our wide range of delicious and authentic snack categories</p>
+              <p className="text-muted fs-6 fs-md-5">Discover our wide range of delicious and authentic snack categories</p>
             </div>
           </div>
         </div>

@@ -37,7 +37,7 @@ const FoodFeatures = () => {
             <div className="site-heading text-center mb-5">
               <h4 className="sub-title text-primary text-uppercase fw-bold">Why Choose Us</h4>
               <h2 className="title text-dark fw-bold mb-3">Food Features</h2>
-              <p className="text-muted">Discover what makes our products special and why customers love us</p>
+              <p className="text-muted fs-6 fs-md-5">Discover what makes our products special and why customers love us</p>
             </div>
           </div>
         </div>
