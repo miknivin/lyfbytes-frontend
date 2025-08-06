@@ -1,6 +1,6 @@
 import ProductData from "../../assets/jsonData/product/ProductData.json";
 import SingleShopV1 from "./SingleShopV1";
-import SingleProductList from "./SingleProductList";
+import ProductCardList from "./ProductCardList";
 import Pagination from "react-paginate";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -96,11 +96,13 @@ const ShopPageContent = () => {
                 role="tabpanel"
                 aria-labelledby="grid-tab-control"
               >
-                <ul className="vt-products columns-4">
+                <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
                   {currentProductData.map((product: any) => (
-                    <SingleShopV1 product={product} key={product.id} />
+                    <div className="col h-100" key={product.id}>
+                      <SingleShopV1 product={product} />
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
               <div
                 className="tab-pane fade"
@@ -108,11 +110,13 @@ const ShopPageContent = () => {
                 role="tabpanel"
                 aria-labelledby="list-tab-control"
               >
-                {/* <ul className="vt-products colums-2">
+                <div className="row g-3">
                   {currentProductData.map((product: any) => (
-                    <SingleProductList product={product} key={product.id} />
+                    <div className="col-12" key={product.id}>
+                      <ProductCardList product={product} />
+                    </div>
                   ))}
-                </ul> */}
+                </div>
               </div>
             </div>
             <nav className="woocommerce-pagination mt-60">

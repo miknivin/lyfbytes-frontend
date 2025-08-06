@@ -34,8 +34,8 @@ interface DataType {
   delay?: string;
 }
 
-const BestSellerCard = ({ product }: { product: DataType }) => {
-  return <ProductCard product={product} cardType="grid" />;
+const ProductCardList = ({ product }: { product: DataType }) => {
+  return <ProductCard product={product} cardType="list" />;
 };
 
-export default BestSellerCard;
+export default ProductCardList;

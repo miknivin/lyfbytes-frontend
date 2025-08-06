@@ -206,7 +206,7 @@ const ShopPage = () => {
                   {category ? `Explore ${category} Collection` : "Explore All Products"}
                 </h2>
                 {category && (
-                  <p>Discover our delicious {category.toLowerCase()} products and snacks</p>
+                  <p className="text-muted fs-6 fs-md-5">Discover our delicious {category.toLowerCase()} products and snacks</p>
                 )}
               </div>
             </div>
