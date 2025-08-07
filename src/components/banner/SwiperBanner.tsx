@@ -12,31 +12,31 @@ const slides = [
   //tomato murukku
   {
     image:
-      "https://ik.imagekit.io/c1jhxlxiy/WhatsApp%20Image%202025-07-10%20at%205.39.44%20PM%20(1).jpeg?updatedAt=1752488236794",
+      "https://ik.imagekit.io/byaqwirhz/WhatsApp%20Image%202025-08-07%20at%2012.28.57%20PM.jpeg?updatedAt=1754549977299",
     url: "/shop-single-thumb/684bce8e3086ec1d0a13d14a",
   },
   //banana chips
   {
     image:
-      "https://ik.imagekit.io/c1jhxlxiy/WhatsApp%20Image%202025-07-10%20at%206.05.42%20PM.jpeg?updatedAt=1752488236853",
+      "https://ik.imagekit.io/byaqwirhz/WhatsApp%20Image%202025-08-07%20at%2012.04.47%20PM.jpeg?updatedAt=1754548636822",
     url: "/shop-single-thumb/684a70f1935b6e99fc9d286f",
   },
   //cornflakes mixture
   {
     image:
-      "https://ik.imagekit.io/c1jhxlxiy/WhatsApp%20Image%202025-07-11%20at%2011.11.13%20AM.jpeg?updatedAt=1752488236724",
+      "https://ik.imagekit.io/byaqwirhz/WhatsApp%20Image%202025-08-07%20at%2012.27.22%20PM.jpeg?updatedAt=1754549931954",
     url: "/shop-single-thumb/684bd3153086ec1d0a13d337",
   },
   //sharkara varatty
   {
     image:
-      "https://ik.imagekit.io/c1jhxlxiy/WhatsApp%20Image%202025-07-11%20at%2011.30.30%20AM.jpeg?updatedAt=1752488236567",
+      "https://ik.imagekit.io/byaqwirhz/WhatsApp%20Image%202025-08-07%20at%2012.34.39%20PM.jpeg?updatedAt=1754550319091",
     url: "/shop-single-thumb/684a81b17d8f44334a7c72e8",
   },
   //kuzhalapam
   {
     image:
-      "https://ik.imagekit.io/c1jhxlxiy/WhatsApp%20Image%202025-07-11%20at%2011.28.13%20AM.jpeg?updatedAt=1752488236505",
+      "https://ik.imagekit.io/byaqwirhz/WhatsApp%20Image%202025-08-07%20at%2012.41.33%20PM.jpeg?updatedAt=1754550725885",
     url: "/shop-single-thumb/6852704921d4ac2f835fa51b",
   },
 ];
@@ -77,7 +77,7 @@ const SwiperBanner = () => {
                   alt={`Slide ${index + 1}`}
                   className="img-fluid w-100"
                   style={{
-                    minHeight: "140px",
+                    minHeight: "130px",
                     maxHeight: "600px",
                     objectFit: "cover",
                   }}

@@ -5,6 +5,7 @@ import { RootState } from "../../store/store"; // Updated path to use @
 import { removeCartItem } from "../../store/features/cartSlice"; // Updated path
 import { toast } from "react-toastify";
 
+
 const HeaderCart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems); // Fixed selector
@@ -39,8 +40,17 @@ const HeaderCart = () => {
                         <div className="thumb">
                           <span className="photo">
                             <img
-                              src={`/assets/img/shop/${item.image}`}
+                              src={
+                                item.image.startsWith("http")
+                                  ? item.image
+                                  : `/assets/img/shop/${item.image}`
+                              }
                               alt={item.name}
+                              onError={(e) => {
+                                e.currentTarget.src = `data:image/svg+xml,${encodeURIComponent(
+                                  `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="#f0f0f0"><rect width="50" height="50" fill="#f8f9fa"/><text x="50%" y="50%" text-anchor="middle" dy="0.3em" font-family="Arial" font-size="8" fill="#6c757d">No Image</text></svg>`
+                                )}`;
+                              }}
                             />
                           </span>
                           <Link
@@ -57,19 +67,19 @@ const HeaderCart = () => {
                           <h6>{item.name}</h6>
                           <p>
                             {item.quantity}x -{" "}
-                            <span className="price">${item.price}</span>
+                            <span className="price">₹{item.price}</span>
                           </p>
                         </div>
                       </li>
                     ))}
                   </ul>
-                  <li className="total mt-3 px-3 pb-3">
+                  <li className="total mt-3 px-3 pb-5">
                     <div className="cart-total mb-3">
                       <span className="total-label">Total: </span>
                       <span className="total-amount">₹{totalAmount.toFixed(2)}</span>
                     </div>
-                   <div className="cart-buttons d-flex flex-column gap-4">
-  <Link to="/cart" className="btn btn-primary btn-cart">
+                   <div className="cart-buttons d-flex flex-column gap-2 mx-2">
+  <Link to="/cart" className="btn btn-primary btn-cart mb-2">
     <i className="fas fa-shopping-cart me-2"></i>
     CART
   </Link>
