@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useGetProductsQuery } from "../../store/api/productApi";
 import BestSellerCard from "../shop/BestSellerCard";
 import "./BestSellers.css";
+import "./EqualHeightCards.css";
 
 const BestSellers = () => {
   const [bestProducts, setBestProducts] = useState<any[]>([]);
@@ -80,10 +81,17 @@ const BestSellers = () => {
         </div>
         <div className="row">
           <div className="col-lg-12">
-            <div className="row row-cols-2 row-cols-md-4 g-3">
+            <div className="row row-cols-2 row-cols-md-4 g-3 d-flex equal-height-cards" style={{ display: 'flex', flexWrap: 'wrap' }}>
               {bestProducts.map((product, index) => (
-                <div className="col" key={product?._id || index}>
-                  <BestSellerCard product={product} />
+                <div className="col" key={product?._id || index} style={{ 
+                  display: 'flex', 
+                  height: '450px', 
+                  minHeight: '450px', 
+                  maxHeight: '450px' 
+                }}>
+                  <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                    <BestSellerCard product={{...product, isBestSeller: true}} />
+                  </div>
                 </div>
               ))}
             </div>

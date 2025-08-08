@@ -4,6 +4,7 @@ import { useGetProductsQuery } from "../../store/api/productApi";
 import SingleShopV1 from "../../components/shop/SingleShopV1";
 import HeaderV2 from "../../components/header/HeaderV2";
 import FooterV1 from "../../components/footer/FooterV1";
+import "../../components/shop/EqualHeightCards.css";
 import shape29 from "/assets/img/shape/29.webp";
 import shape30 from "/assets/img/shape/30.webp";
 
@@ -14,7 +15,30 @@ const ShopPage = () => {
   const [page, setPage] = useState(1);
   const [allProducts, setAllProducts] = useState<any[]>([]);
   const [loadingAll, setLoadingAll] = useState(false);
+  const [bestSellerIds, setBestSellerIds] = useState<Set<string>>(new Set());
   const loadMoreRef = useRef(null);
+
+  // Fetch bestsellers to identify which products should have badges
+  const { data: bestSellersData } = useGetProductsQuery({
+    page: 1,
+    resPerPage: 8,
+  });
+
+  useEffect(() => {
+    if (bestSellersData?.filteredProducts) {
+      // Get top-rated products (same logic as BestSellers component)
+      const sortedProducts = [...bestSellersData.filteredProducts]
+        .filter((product) => product.ratings && product.ratings > 0)
+        .sort((a, b) => (b.ratings || 0) - (a.ratings || 0))
+        .slice(0, 8);
+      
+      const bestSellerProductIds = sortedProducts.length > 0 
+        ? new Set(sortedProducts.map(p => p._id))
+        : new Set(bestSellersData.filteredProducts.slice(0, 8).map((p: { _id: any; }) => p._id));
+        
+      setBestSellerIds(bestSellerProductIds);
+    }
+  }, [bestSellersData]);
 
   // Fetch products for the current page with category filter
   const queryParams = {
@@ -94,7 +118,22 @@ const ShopPage = () => {
       if (page === 1) {
         setAllProducts(data.filteredProducts);
       } else {
-        setAllProducts((prev) => [...prev, ...data.filteredProducts]);
+        setAllProducts((prev) => {
+          // Get existing product IDs to avoid duplicates
+          const existingIds = new Set(prev.map(p => p._id));
+          
+          // Filter out products that are already in the list
+          const newProducts = data.filteredProducts.filter(
+            (            product: { _id: any; }) => !existingIds.has(product._id)
+          );
+          
+          // Only add new products
+          if (newProducts.length > 0) {
+            return [...prev, ...newProducts];
+          }
+          
+          return prev; // Return existing array if no new products
+        });
       }
     }
   }, [data, page]);
@@ -219,11 +258,14 @@ const ShopPage = () => {
                 <>
                   <div
                     style={{ justifyContent: "stretch", alignItems: "stretch" }}
-                    className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 d-flex"
+                    className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 d-flex equal-height-cards"
                   >
                     {allProducts.map((product, index) => (
                       <div className="col h-100" key={product?._id || index}>
-                        <SingleShopV1 product={product} />
+                        <SingleShopV1 product={{
+                          ...product, 
+                          isBestSeller: bestSellerIds.has(product._id)
+                        }} />
                       </div>
                     ))}
                   </div>

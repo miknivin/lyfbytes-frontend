@@ -4,11 +4,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store"; // Updated path to use @
 import { removeCartItem } from "../../store/features/cartSlice"; // Updated path
 import { toast } from "react-toastify";
-
+import "./HeaderCart.css";
 
 const HeaderCart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems); // Fixed selector
+
+  // Transform image URL function (same as ProductCard)
+  const transformImageUrl = (url: string) => {
+    const CLOUD_FRONT_BASE_URL = "https://d229x2i5qj11ya.cloudfront.net";
+    if (url.includes("kids-bags.s3.eu-north-1.amazonaws.com")) {
+      const path = url.split("/uploads")[1];
+      return `${CLOUD_FRONT_BASE_URL}/uploads${path}`;
+    }
+    return url;
+  };
 
   // Fallback to empty array if cartItems is undefined
   const items = cartItems || [];
@@ -40,16 +50,18 @@ const HeaderCart = () => {
                         <div className="thumb">
                           <span className="photo">
                             <img
-                              src={
-                                item.image.startsWith("http")
-                                  ? item.image
-                                  : `/assets/img/shop/${item.image}`
-                              }
+                              src={transformImageUrl(item.image)}
                               alt={item.name}
+                              style={{
+                                width: "60px",
+                                height: "60px", 
+                                objectFit: "contain",
+                                borderRadius: "4px",
+                                backgroundColor: "#f8f9fa",
+                                padding: "3px"
+                              }}
                               onError={(e) => {
-                                e.currentTarget.src = `data:image/svg+xml,${encodeURIComponent(
-                                  `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="#f0f0f0"><rect width="50" height="50" fill="#f8f9fa"/><text x="50%" y="50%" text-anchor="middle" dy="0.3em" font-family="Arial" font-size="8" fill="#6c757d">No Image</text></svg>`
-                                )}`;
+                                e.currentTarget.src = "/assets/img/placeholder.jpg";
                               }}
                             />
                           </span>
@@ -67,7 +79,7 @@ const HeaderCart = () => {
                           <h6>{item.name}</h6>
                           <p>
                             {item.quantity}x -{" "}
-                            <span className="price">₹{item.price}</span>
+                            <span className="price">${item.price}</span>
                           </p>
                         </div>
                       </li>

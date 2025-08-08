@@ -4,7 +4,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../../store/api/authApi";
-import { setUser, setIsAuthenticated } from "../../store/features/userSlice";
+import { setUser, setIsAuthenticated, setToken } from "../../store/features/userSlice";
 import GoogleSigninButton from "./SignInWithGoogle";
 
 interface LoginModalProps {
@@ -33,6 +33,13 @@ const LoginModal: React.FC<LoginModalProps> = ({
       const response = await login({ email, password }).unwrap();
 
       if (response.token) {
+        // Store token in localStorage for persistence
+        localStorage.setItem("token", response.token);
+        
+        // Set token in Redux
+        dispatch(setToken(response.token));
+        
+        // Set user data in Redux
         dispatch(
           setUser({
             id: response._id,

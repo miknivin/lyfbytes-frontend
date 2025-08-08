@@ -33,6 +33,7 @@ import BlogSinglePage from "./pages/blogPages/BlogSinglePage";
 import BlogSingleWithSidebarPage from "./pages/blogPages/BlogSingleWithSidebar";
 
 import ShopPage from "./pages/shopPage/ShopPage";
+import BestSellersPage from "./pages/shopPage/BestSellersPage";
 import ShopSingleThumbPage from "./pages/shopPage/ShopSingleThumbPage";
 import ShopSinglePage from "./pages/shopPage/ShopSinglePage";
 import CartPage from "./pages/shopPage/CartPage";
@@ -99,6 +100,7 @@ const Routers = () => {
         />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/shop?:page?" element={<ShopPage />} />
+        <Route path="/best-sellers" element={<BestSellersPage />} />
         <Route path="/shop-single/:id" element={<ShopSinglePage />} />
         <Route
           path="/shop-single-thumb/:id"

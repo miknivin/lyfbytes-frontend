@@ -13,6 +13,16 @@ const CartPageContent = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems); // No need for type casting
 
+  // Transform image URL function (same as ProductCard)
+  const transformImageUrl = (url: string) => {
+    const CLOUD_FRONT_BASE_URL = "https://d229x2i5qj11ya.cloudfront.net";
+    if (url.includes("kids-bags.s3.eu-north-1.amazonaws.com")) {
+      const path = url.split("/uploads")[1];
+      return `${CLOUD_FRONT_BASE_URL}/uploads${path}`;
+    }
+    return url;
+  };
+
   const subtotal = cartItems.reduce(
     (total, item) => total + (item.price || 0) * (item.quantity || 0),
     0
@@ -94,15 +104,19 @@ const CartPageContent = () => {
                           <td className="product-thumbnail">
                             <Link to={`/shop-single-thumb/${item.product}`}>
                               <img
-                                src={
-                                  item.image.startsWith("http")
-                                    ? item.image
-                                    : `/assets/img/shop/${item.image}`
-                                }
+                                src={transformImageUrl(item.image)}
                                 alt={item.name}
                                 onError={(e) => {
                                   e.currentTarget.src =
-                                    "/assets/img/shop/placeholder.jpg";
+                                    "/assets/img/placeholder.jpg";
+                                }}
+                                style={{
+                                  width: "80px",
+                                  height: "80px",
+                                  objectFit: "contain",
+                                  borderRadius: "8px",
+                                  backgroundColor: "#f8f9fa",
+                                  padding: "4px"
                                 }}
                               />
                             </Link>

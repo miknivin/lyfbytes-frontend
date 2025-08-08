@@ -4,6 +4,7 @@ import ProductCardList from "./ProductCardList";
 import Pagination from "react-paginate";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "./EqualHeightCards.css";
 
 const ShopPageContent = () => {
   const navigate = useNavigate();
@@ -96,10 +97,13 @@ const ShopPageContent = () => {
                 role="tabpanel"
                 aria-labelledby="grid-tab-control"
               >
-                <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+                <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 equal-height-cards">
                   {currentProductData.map((product: any) => (
                     <div className="col h-100" key={product.id}>
-                      <SingleShopV1 product={product} />
+                      <SingleShopV1 product={{
+                        ...product,
+                        isBestSeller: product.ratings >= 4.5 || product.badge === "Best Seller"
+                      }} />
                     </div>
                   ))}
                 </div>
@@ -113,7 +117,10 @@ const ShopPageContent = () => {
                 <div className="row g-3">
                   {currentProductData.map((product: any) => (
                     <div className="col-12" key={product.id}>
-                      <ProductCardList product={product} />
+                      <ProductCardList product={{
+                        ...product,
+                        isBestSeller: product.ratings >= 4.5 || product.badge === "Best Seller"
+                      }} />
                     </div>
                   ))}
                 </div>

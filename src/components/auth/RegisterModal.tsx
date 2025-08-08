@@ -4,7 +4,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useRegisterMutation } from "../../store/api/authApi";
-import { setUser } from "../../store/features/userSlice";
+import { setUser, setToken, setIsAuthenticated } from "../../store/features/userSlice";
 import GoogleSigninButton from "./SignInWithGoogle";
 
 interface RegisterModalProps {
@@ -52,6 +52,14 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
         email: formData.email,
         password: formData.password,
       }).unwrap();
+      
+      // Store token if provided
+      if (response.token) {
+        localStorage.setItem("token", response.token);
+        dispatch(setToken(response.token));
+      }
+      
+      // Set user data
       dispatch(
         setUser({
           id: response._id,
@@ -59,6 +67,10 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
           email: response.email,
         })
       );
+      
+      // Set authentication state
+      dispatch(setIsAuthenticated(true));
+      
       toast.success("Registration successful!");
       setShowRegisterModal(false);
       if (onRegisterSuccess) {

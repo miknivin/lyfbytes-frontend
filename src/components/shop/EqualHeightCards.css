@@ -1,0 +1,100 @@
+/* Equal Height Product Cards - Universal CSS for ALL Product Grids */
+
+/* Base grid layout */
+.row.row-cols-2, 
+.row.row-cols-md-3, 
+.row.row-cols-md-4,
+.row.row-cols-lg-4 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Universal equal height system for ALL product card sections */
+.equal-height-cards {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.equal-height-cards > .col,
+.d-flex.equal-height-cards > .col {
+  display: flex !important;
+  height: 450px !important;
+  min-height: 450px !important;
+  max-height: 450px !important;
+  margin-bottom: 1rem;
+}
+
+.equal-height-cards .product-card,
+.d-flex.equal-height-cards .product-card {
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.equal-height-cards .product-card .card,
+.d-flex.equal-height-cards .product-card .card {
+  height: 100% !important;
+  max-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.equal-height-cards .product-card .card-body,
+.d-flex.equal-height-cards .product-card .card-body {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  padding: 8px 12px !important;
+}
+
+/* Responsive overrides - maintain 450px height on all devices */
+@media (max-width: 768px) {
+  .equal-height-cards > .col,
+  .d-flex.equal-height-cards > .col {
+    height: 450px !important;
+    max-height: 450px !important;
+    min-height: 450px !important;
+  }
+  
+  .equal-height-cards .product-card .card,
+  .d-flex.equal-height-cards .product-card .card {
+    height: 100% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .equal-height-cards > .col,
+  .d-flex.equal-height-cards > .col {
+    height: 450px !important;
+    max-height: 450px !important;
+    min-height: 450px !important;
+  }
+  
+  .equal-height-cards .product-card .card,
+  .d-flex.equal-height-cards .product-card .card {
+    height: 100% !important;
+  }
+}
+
+/* Product spacing optimizations */
+.equal-height-cards .product-tags-container {
+  min-height: 24px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.equal-height-cards .card-title {
+  margin-bottom: 4px !important;
+}
+
+.equal-height-cards .mb-1 {
+  margin-bottom: 4px !important;
+}
+
+.equal-height-cards .mb-2 {
+  margin-bottom: 8px !important;
+}

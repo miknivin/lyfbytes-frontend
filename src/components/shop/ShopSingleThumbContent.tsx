@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { addToCart, setQuantityChange } from "../../store/features/cartSlice";
@@ -7,6 +6,7 @@ import { useState, useEffect } from "react";
 import ShopSingleTab from "./ShopSingleTab";
 import RatingsStar from "../utilities/RatingsStar";
 import ProductImageGallery from "./ProductImageGallery";
+import ProductTags from "./ProductTags";
 
 // Define interfaces for TypeScript
 interface Variant {
@@ -137,16 +137,14 @@ const ShopSingleThumbContent = ({ productInfo }: { productInfo: DataType }) => {
             <div className="col-lg-6">
               <div className="single-product-contents">
                 <div className="summary-top-box">
-                  <div className="product-tags">
-                    {Array.isArray(tags) && (tags?.length ?? 0) > 0
-                      ? (tags ?? []).map((data, index) => (
-                          <Link key={index} to="#">
-                            {data}
-                            {index < (tags?.length ?? 0) - 1 && ","}
-                          </Link>
-                        ))
-                      : null}
-                  </div>
+                  <ProductTags 
+                    tags={tags} 
+                    productName={name}
+                    layout="horizontal"
+                    maxTags={8}
+                    showIcon={true}
+                    clickable={true}
+                  />
                   <div className="review-count">
                     <RatingsStar ratings={ratings} />
                     <span>

@@ -1,0 +1,197 @@
+/* Product Tags Component Styles */
+.product-tags-container {
+  margin: 4px 0 6px 0;
+}
+
+.product-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.product-tags-container.grid .product-tags-list {
+  justify-content: center;
+}
+
+.product-tags-container.horizontal .product-tags-list {
+  justify-content: flex-start;
+}
+
+/* Individual Product Tag Styles */
+.product-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid;
+  color: white;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
+
+.product-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: white;
+  filter: brightness(1.1);
+}
+
+/* Tag Icons */
+.tag-icon {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.tag-label {
+  line-height: 1.2;
+}
+
+/* Tag Type Specific Styles */
+.product-tag.tag-health {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.product-tag.tag-health:hover {
+  background-color: #218838;
+  border-color: #218838;
+}
+
+.product-tag.tag-ingredient {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+}
+
+.product-tag.tag-ingredient:hover {
+  background-color: #5a36aa;
+  border-color: #5a36aa;
+}
+
+.product-tag.tag-special {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  animation: pulse-special 2s infinite;
+}
+
+.product-tag.tag-special:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
+
+@keyframes pulse-special {
+  0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(220, 53, 69, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+.product-tag.tag-dietary {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.product-tag.tag-dietary:hover {
+  background-color: #138496;
+  border-color: #138496;
+}
+
+.product-tag.tag-occasion {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  background: linear-gradient(135deg, #dc3545, #e83e8c);
+}
+
+.product-tag.tag-occasion:hover {
+  background: linear-gradient(135deg, #c82333, #d91a72);
+}
+
+.product-tag.tag-quality {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+  background: linear-gradient(135deg, #6f42c1, #6610f2);
+}
+
+.product-tag.tag-quality:hover {
+  background: linear-gradient(135deg, #5a36aa, #520dc2);
+}
+
+.product-tag.tag-feature {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #212529;
+}
+
+.product-tag.tag-feature:hover {
+  background-color: #e0a800;
+  border-color: #e0a800;
+  color: #212529;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-tag {
+    font-size: 0.55rem;
+    padding: 2px 4px;
+    gap: 1px;
+  }
+  
+  .tag-icon {
+    font-size: 0.6rem;
+  }
+  
+  .product-tags-list {
+    gap: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-tag {
+    font-size: 0.5rem;
+    padding: 1px 3px;
+  }
+  
+  .tag-icon {
+    font-size: 0.55rem;
+  }
+  
+  .product-tags-list {
+    gap: 2px;
+  }
+}
+
+/* Integration with existing product card styles */
+.product-card .product-tags-container {
+  margin: 6px 0 8px 0;
+}
+
+.product-card-list .product-tags-container {
+  margin: 4px 0 6px 0;
+}
+
+/* Ensure tags don't interfere with existing layouts */
+.single-product-contents .product-tags-container {
+  margin: 10px 0 15px 0;
+}
+
+.single-product-contents .product-tags-container .product-tags-list {
+  justify-content: flex-start;
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+  .product-tag.tag-feature {
+    color: #000;
+  }
+  
+  .product-tag.tag-feature:hover {
+    color: #000;
+  }
+}

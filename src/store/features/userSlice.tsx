@@ -38,6 +38,11 @@ const userSlice = createSlice({
     },
     setIsAuthenticated(state, action: PayloadAction<boolean>) {
       state.isAuthenticated = action.payload;
+      // Clear logout flags when user is successfully authenticated
+      if (action.payload === true && typeof window !== "undefined") {
+        localStorage.removeItem("hasLoggedOut");
+        sessionStorage.removeItem("userLoggedOut");
+      }
     },
     setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
@@ -46,6 +51,13 @@ const userSlice = createSlice({
       state.user = null;
       state.token = "";
       state.isAuthenticated = false;
+      // Remove token from localStorage and set logout flag when clearing user
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("token");
+        localStorage.setItem("hasLoggedOut", "true");
+        // Also set a session flag to prevent re-authentication during this session
+        sessionStorage.setItem("userLoggedOut", "true");
+      }
     },
   },
 });

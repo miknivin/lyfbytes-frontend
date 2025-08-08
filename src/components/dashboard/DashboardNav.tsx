@@ -32,12 +32,16 @@ export default function DashboardNav() {
           withCredentials: true,
         }
       );
-      dispatch(clearUser());
+      dispatch(clearUser()); // This will now also remove token from localStorage
       toast.success("Logged out successfully");
       navigate("/");
     } catch (error) {
       toast.error("Logout failed");
       console.error(error);
+      // Clear local state even if server logout fails
+      dispatch(clearUser()); // This will now also remove token from localStorage
+      navigate("/");
+    } finally {
       setIsLoading(false);
     }
   };

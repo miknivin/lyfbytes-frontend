@@ -1,0 +1,120 @@
+/* Best Seller Badge Styles */
+.best-seller-badge {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.best-seller-top-left {
+  top: 8px;
+  left: 8px;
+}
+
+.best-seller-top-right {
+  top: 8px;
+  right: 8px;
+}
+
+.best-seller-content {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.4);
+  border: 2px solid #fff;
+  position: relative;
+  overflow: visible;
+}
+
+/* Size variants */
+.best-seller-badge-small .best-seller-content {
+  width: 45px;
+  height: 45px;
+}
+
+.best-seller-badge-medium .best-seller-content {
+  width: 55px;
+  height: 55px;
+}
+
+.best-seller-badge-large .best-seller-content {
+  width: 65px;
+  height: 65px;
+}
+
+/* Stars container */
+.stars-container {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1px;
+}
+
+.star {
+  color: #ffd700;
+  font-size: 0.4rem;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+}
+
+.best-seller-badge-medium .star {
+  font-size: 0.5rem;
+}
+
+.best-seller-badge-large .star {
+  font-size: 0.6rem;
+}
+
+/* Text styling */
+.best-seller-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.best-text {
+  font-size: 0.45rem;
+  letter-spacing: 0.5px;
+}
+
+.seller-text {
+  font-size: 0.4rem;
+  letter-spacing: 0.3px;
+  margin-top: -1px;
+}
+
+.best-seller-badge-medium .best-text {
+  font-size: 0.5rem;
+}
+
+.best-seller-badge-medium .seller-text {
+  font-size: 0.45rem;
+}
+
+.best-seller-badge-large .best-text {
+  font-size: 0.6rem;
+}
+
+.best-seller-badge-large .seller-text {
+  font-size: 0.55rem;
+}
+
+/* Animation on hover */
+.best-seller-badge:hover .best-seller-content {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* Ensure it appears above other elements */
+.best-seller-badge {
+  z-index: 15;
+}

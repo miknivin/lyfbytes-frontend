@@ -15,7 +15,7 @@ const BreadCrumb = ({ breadCrumb, title }: DataType) => {
                             <h1>{title ? title : "Not Found Page"}</h1>
                             <ul className="breadcrumb">
                                 <li><Link to="/"><i className="fas fa-home" /> Home</Link></li>
-                                <li>{breadCrumb ? breadCrumb : "not-found"}</li>
+                                <li>{breadCrumb ? breadCrumb : "Best sellers"}</li>
                             </ul>
                         </div>
                     </div>
