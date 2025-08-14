@@ -21,14 +21,24 @@ let persistedAuth = false;
 try {
   const userStr = typeof window !== "undefined" ? localStorage.getItem("user") : null;
   const tokenStr = typeof window !== "undefined" ? localStorage.getItem("token") : null;
-  if (userStr) {
-    persistedUser = JSON.parse(userStr);
+  // Only hydrate if BOTH user and token exist and are valid
+  if (userStr && tokenStr) {
+    const parsedUser = JSON.parse(userStr);
+    if (parsedUser && parsedUser.id && tokenStr.length > 0) {
+      persistedUser = parsedUser;
+      persistedToken = tokenStr;
+      persistedAuth = true;
+    } else {
+      persistedUser = null;
+      persistedToken = "";
+      persistedAuth = false;
+    }
+  } else {
+    persistedUser = null;
+    persistedToken = "";
+    persistedAuth = false;
   }
-  if (tokenStr) {
-    persistedToken = tokenStr;
-    persistedAuth = true;
-  }
-} catch (e) {
+} catch {
   persistedUser = null;
   persistedToken = "";
   persistedAuth = false;
@@ -77,6 +87,8 @@ const userSlice = createSlice({
       if (typeof window !== "undefined") {
         localStorage.removeItem("user");
         localStorage.removeItem("token");
+        // Also clear all localStorage if needed
+        // localStorage.clear();
       }
     },
   },

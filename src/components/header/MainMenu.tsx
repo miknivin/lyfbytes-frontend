@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { FaUser, FaPhone, FaChevronDown } from "react-icons/fa";
+import axios from "axios";
 import { RootState } from "../../store/store";
 import { clearUser } from "../../store/features/userSlice";
 
@@ -52,15 +53,22 @@ const MainMenu: React.FC<DataType> = ({
   const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isAuthenticated) {
-      // Clear user data from Redux
-      dispatch(clearUser());
-      // Clear localStorage/sessionStorage if needed
-      localStorage.removeItem("token");
-      sessionStorage.removeItem("token");
-      // Show success toast
-      toast.success("Logged out successfully!");
-      // Redirect to home page
-      navigate("/");
+      // Call backend logout to clear session/cookie
+      axios.post("/api/auth/logout", {}, { withCredentials: true })
+        .then(() => {
+          dispatch(clearUser());
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+          sessionStorage.removeItem("user");
+          sessionStorage.removeItem("token");
+          toast.success("Logged out successfully!");
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 300);
+        })
+        .catch(() => {
+          toast.error("Logout failed");
+        });
     } else {
       // If not authenticated, open login modal
       if (setShowLoginModal) {

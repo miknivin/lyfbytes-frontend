@@ -13,11 +13,19 @@ const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // Check for stored token on app startup
+        // Only hydrate if BOTH user and token exist and are valid
         const storedToken = localStorage.getItem("token");
-        if (storedToken) {
-            dispatch(setToken(storedToken));
-            dispatch(setIsAuthenticated(true));
+        const storedUser = localStorage.getItem("user");
+        if (storedToken && storedUser) {
+            try {
+                const parsedUser = JSON.parse(storedUser);
+                if (parsedUser && parsedUser.id && storedToken.length > 0) {
+                    dispatch(setToken(storedToken));
+                    dispatch(setIsAuthenticated(true));
+                }
+            } catch {
+                // Invalid user data, do not hydrate
+            }
         }
     }, [dispatch]);
 
