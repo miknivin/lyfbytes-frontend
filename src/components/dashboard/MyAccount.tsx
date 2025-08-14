@@ -4,16 +4,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { RootState } from "../../store/store"; // Adjust path as needed
 
 export default function MyAccount() {
-  let { user, isAuthenticated } = useSelector(
+  const { user, isAuthenticated } = useSelector(
     (state: RootState) => state.user
   );
-  // Fallback to localStorage if Redux user is missing
-  if (!user && typeof window !== "undefined") {
-    const userStr = localStorage.getItem("user");
-    if (userStr) {
-      user = JSON.parse(userStr);
-    }
-  }
   const navigate = useNavigate();
   const [initialCheckComplete, setInitialCheckComplete] = useState(false);
 

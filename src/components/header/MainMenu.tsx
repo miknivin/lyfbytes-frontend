@@ -3,9 +3,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { FaUser, FaPhone, FaChevronDown } from "react-icons/fa";
-// Use full API URL for logout
-const API_URL = import.meta.env.VITE_API_URL || "";
-import axios from "axios";
 import { RootState } from "../../store/store";
 import { clearUser } from "../../store/features/userSlice";
 
@@ -55,24 +52,15 @@ const MainMenu: React.FC<DataType> = ({
   const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isAuthenticated) {
-      (async () => {
-        try {
-          await axios.post(
-            `${API_URL}/api/auth/logout`,
-            {},
-            { withCredentials: true }
-          );
-          dispatch(clearUser());
-          localStorage.removeItem("user");
-          localStorage.removeItem("token");
-          sessionStorage.removeItem("user");
-          sessionStorage.removeItem("token");
-          toast.success("Logged out successfully!");
-          navigate("/");
-        } catch {
-          toast.error("Logout failed");
-        }
-      })();
+      // Clear user data from Redux
+      dispatch(clearUser());
+      // Clear localStorage/sessionStorage if needed
+      localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
+      // Show success toast
+      toast.success("Logged out successfully!");
+      // Redirect to home page
+      navigate("/");
     } else {
       // If not authenticated, open login modal
       if (setShowLoginModal) {
