@@ -69,7 +69,7 @@ const MainMenu: React.FC<DataType> = ({
           sessionStorage.removeItem("token");
           toast.success("Logged out successfully!");
           setTimeout(() => {
-            window.location.href = "/";
+            window.location.reload();
           }, 300);
         })
         .catch(() => {
