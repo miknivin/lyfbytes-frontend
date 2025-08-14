@@ -55,26 +55,24 @@ const MainMenu: React.FC<DataType> = ({
   const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isAuthenticated) {
-      // Use full API URL for logout, matching My Account logic
-      axios.post(
-        `${API_URL}/api/auth/logout`,
-        {},
-        { withCredentials: true }
-      )
-        .then(() => {
+      (async () => {
+        try {
+          await axios.post(
+            `${API_URL}/api/auth/logout`,
+            {},
+            { withCredentials: true }
+          );
           dispatch(clearUser());
           localStorage.removeItem("user");
           localStorage.removeItem("token");
           sessionStorage.removeItem("user");
           sessionStorage.removeItem("token");
           toast.success("Logged out successfully!");
-          setTimeout(() => {
-            window.location.reload();
-          }, 300);
-        })
-        .catch(() => {
+          navigate("/");
+        } catch {
           toast.error("Logout failed");
-        });
+        }
+      })();
     } else {
       // If not authenticated, open login modal
       if (setShowLoginModal) {
