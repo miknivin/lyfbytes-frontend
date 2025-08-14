@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { FaUser, FaPhone, FaChevronDown } from "react-icons/fa";
+// Use full API URL for logout
+const API_URL = import.meta.env.VITE_API_URL || "";
 import axios from "axios";
 import { RootState } from "../../store/store";
 import { clearUser } from "../../store/features/userSlice";
@@ -53,8 +55,12 @@ const MainMenu: React.FC<DataType> = ({
   const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isAuthenticated) {
-      // Call backend logout to clear session/cookie
-      axios.post("/api/auth/logout", {}, { withCredentials: true })
+      // Use full API URL for logout, matching My Account logic
+      axios.post(
+        `${API_URL}/api/auth/logout`,
+        {},
+        { withCredentials: true }
+      )
         .then(() => {
           dispatch(clearUser());
           localStorage.removeItem("user");
