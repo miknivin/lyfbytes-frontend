@@ -2,6 +2,7 @@ import { store } from "../../store/store";
 import { Provider } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 import { setToken, setIsAuthenticated } from "../../store/features/userSlice";
 
 interface LayoutProps {
@@ -20,8 +21,19 @@ const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
             try {
                 const parsedUser = JSON.parse(storedUser);
                 if (parsedUser && parsedUser.id && storedToken.length > 0) {
-                    dispatch(setToken(storedToken));
-                    dispatch(setIsAuthenticated(true));
+                    // Verify with backend if session/cookie is still valid
+                    axios.get("/api/auth/me", { withCredentials: true })
+                        .then(res => {
+                            if (res.data && res.data.user && res.data.user.id) {
+                                dispatch(setToken(storedToken));
+                                dispatch(setIsAuthenticated(true));
+                            } else {
+                                // Not authenticated, do not hydrate
+                            }
+                        })
+                        .catch(() => {
+                            // Not authenticated, do not hydrate
+                        });
                 }
             } catch {
                 // Invalid user data, do not hydrate
