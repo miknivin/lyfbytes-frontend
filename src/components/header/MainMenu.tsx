@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react"; // Add useState import
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { FaUser, FaPhone, FaChevronDown } from "react-icons/fa";
+// Use full API URL for logout
+const API_URL = import.meta.env.VITE_API_URL || "";
+import axios from "axios";
 import { RootState } from "../../store/store";
 import { clearUser } from "../../store/features/userSlice";
-import axios from "axios";
-import { getAuth, signOut } from "firebase/auth"; // Import Firebase auth
 
 interface DataType {
   navbarPlacement?: string;
@@ -16,23 +16,27 @@ interface DataType {
   setShowRegisterModal?: (show: boolean) => void;
 }
 
-const MainMenu: React.FC<DataType> = ({
-  navbarPlacement,
-  toggleSubMenu,
+const MainMenu: React.FC<DataType> = ({ 
+  navbarPlacement, 
+  toggleSubMenu, 
   setShowLoginModal,
-  setShowRegisterModal,
+  setShowRegisterModal 
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state: RootState) => state.user);
-  const [isLoading, setIsLoading] = useState(false); // Initialize loading state
+  
+  // Get authentication state from Redux
+  const { isAuthenticated, user } = useSelector((state: RootState) => state.user);
 
   const handleMyAccountClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isAuthenticated) {
       navigate("/my-account");
-    } else if (setShowLoginModal) {
-      setShowLoginModal(true);
+    } else {
+      // Open login modal instead of navigating to login page
+      if (setShowLoginModal) {
+        setShowLoginModal(true);
+      }
     }
   };
 
@@ -40,49 +44,40 @@ const MainMenu: React.FC<DataType> = ({
     e.preventDefault();
     if (isAuthenticated) {
       navigate("/orders");
-    } else if (setShowLoginModal) {
-      setShowLoginModal(true);
+    } else {
+      // Open login modal instead of navigating to login page
+      if (setShowLoginModal) {
+        setShowLoginModal(true);
+      }
     }
   };
 
-  const handleLogout = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isAuthenticated) {
-      try {
-        setIsLoading(true); // Set loading state
-        // Sign out from Firebase
-        const auth = getAuth();
-        await signOut(auth);
-
-        // Call backend logout endpoint
-        await axios.post(
-          "/api/auth/logout",
-          {},
-          {
-            withCredentials: true,
-          }
-        );
-
-        // Clear Redux state
-        dispatch(clearUser());
-
-        // Clear localStorage/sessionStorage
-        localStorage.removeItem("token");
-        sessionStorage.removeItem("token");
-
-        // Show success toast
-        toast.success("Logged out successfully");
-
-        // Redirect to home page
-        navigate("/");
-      } catch (error) {
-        toast.error("Logout failed");
-        console.error("Logout error:", error);
-      } finally {
-        setIsLoading(false); // Reset loading state regardless of success or failure
+      (async () => {
+        try {
+          await axios.post(
+            `${API_URL}/api/auth/logout`,
+            {},
+            { withCredentials: true }
+          );
+          dispatch(clearUser());
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+          sessionStorage.removeItem("user");
+          sessionStorage.removeItem("token");
+          toast.success("Logged out successfully!");
+          navigate("/");
+        } catch {
+          toast.error("Logout failed");
+        }
+      })();
+    } else {
+      // If not authenticated, open login modal
+      if (setShowLoginModal) {
+        setShowLoginModal(true);
       }
-    } else if (setShowLoginModal) {
-      setShowLoginModal(true);
     }
   };
 
@@ -90,27 +85,42 @@ const MainMenu: React.FC<DataType> = ({
     <>
       <ul className={`nav navbar-nav ${navbarPlacement}`}>
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="/best-sellers" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink
+            to="/best-sellers"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             Best Sellers
           </NavLink>
         </li>
         <li>
-          <NavLink to="/about-us" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink
+            to="/about-us"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             About
           </NavLink>
         </li>
         <li>
-          <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             Contact
           </NavLink>
         </li>
         <li>
-          <NavLink to="/shipping" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink
+            to="/shipping"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             Global Shipping
           </NavLink>
         </li>
@@ -130,14 +140,8 @@ const MainMenu: React.FC<DataType> = ({
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                onClick={handleLogout}
-                style={{
-                  cursor: isLoading ? "not-allowed" : "pointer",
-                }}
-              >
-                {isLoading ? "Logging out..." : isAuthenticated ? "Logout" : "Login"}
+              <a href="#" onClick={handleLogout}>
+                {isAuthenticated ? "Logout" : "Login"}
               </a>
             </li>
           </ul>
