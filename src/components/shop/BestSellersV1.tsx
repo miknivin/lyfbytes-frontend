@@ -1,6 +1,5 @@
 import { useGetProductsQuery } from "../../store/api/productApi";
 import SingleShopV1 from "./SingleShopV1";
-import "./EqualHeightCards.css";
 import shape29 from "/assets/img/shape/29.webp";
 import shape30 from "/assets/img/shape/30.webp";
 
@@ -72,11 +71,11 @@ const BestSellersV1 = () => {
           <div className="col-lg-12">
             <div
               style={{ justifyContent: "stretch", alignItems: "stretch" }}
-              className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 d-flex equal-height-cards"
+              className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 d-flex"
             >
               {data?.filteredProducts?.map((product: any, index: number) => (
                 <div className="col h-100" key={product?._id || index}>
-                  <SingleShopV1 product={{...product, isBestSeller: true}} />
+                  <SingleShopV1 product={product} />
                 </div>
               ))}
             </div>

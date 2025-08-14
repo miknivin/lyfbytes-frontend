@@ -74,14 +74,11 @@ export const authApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
-          // After logout, clear user state (this will now also remove token from localStorage)
+          // After logout, you might want to clear user state instead of calling getMe
           dispatch(clearUser());
           dispatch(setIsAuthenticated(false));
         } catch (error) {
           console.log(error);
-          // Even if server logout fails, clear local authentication state
-          dispatch(clearUser());
-          dispatch(setIsAuthenticated(false));
         }
       },
     }),

@@ -52,8 +52,11 @@ const MainMenu: React.FC<DataType> = ({
   const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isAuthenticated) {
-      // Clear user data from Redux (this will now also remove token from localStorage)
+      // Clear user data from Redux
       dispatch(clearUser());
+      // Clear localStorage/sessionStorage if needed
+      localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
       // Show success toast
       toast.success("Logged out successfully!");
       // Redirect to home page

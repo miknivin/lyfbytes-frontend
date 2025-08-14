@@ -32,7 +32,6 @@ interface DataType {
   badge?: string;
   tags?: string[];
   delay?: string;
-  isBestSeller?: boolean; // Flag to indicate if product is a bestseller
 }
 
 const BestSellerCard = ({ product }: { product: DataType }) => {

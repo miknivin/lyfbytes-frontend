@@ -33,7 +33,6 @@ interface DataType {
   badge?: string;
   tags?: string[];
   delay?: string;
-  isBestSeller?: boolean; // Flag to indicate if product is a bestseller
 }
 
 const SingleShopV1 = ({ product }: { product: DataType }) => {

@@ -14,10 +14,29 @@ interface UserState {
   loading: boolean;
 }
 
+// Hydrate from localStorage if available
+let persistedUser: User | null = null;
+let persistedToken = "";
+let persistedAuth = false;
+try {
+  const userStr = typeof window !== "undefined" ? localStorage.getItem("user") : null;
+  const tokenStr = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  if (userStr) {
+    persistedUser = JSON.parse(userStr);
+  }
+  if (tokenStr) {
+    persistedToken = tokenStr;
+    persistedAuth = true;
+  }
+} catch (e) {
+  persistedUser = null;
+  persistedToken = "";
+  persistedAuth = false;
+}
 const initialState: UserState = {
-  user: null,
-  token: "",
-  isAuthenticated: false,
+  user: persistedUser,
+  token: persistedToken,
+  isAuthenticated: persistedAuth,
   loading: false,
 };
 
@@ -32,17 +51,21 @@ const userSlice = createSlice({
         email: action.payload.email || "",
         phone: action.payload.phone || "",
       };
+      // Persist to localStorage
+      if (typeof window !== "undefined") {
+        localStorage.setItem("user", JSON.stringify(state.user));
+      }
     },
     setToken(state, action: PayloadAction<string>) {
       state.token = action.payload;
+      // Persist to localStorage
+      if (typeof window !== "undefined") {
+        localStorage.setItem("token", state.token);
+      }
     },
     setIsAuthenticated(state, action: PayloadAction<boolean>) {
       state.isAuthenticated = action.payload;
-      // Clear logout flags when user is successfully authenticated
-      if (action.payload === true && typeof window !== "undefined") {
-        localStorage.removeItem("hasLoggedOut");
-        sessionStorage.removeItem("userLoggedOut");
-      }
+      // Optionally persist auth state
     },
     setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
@@ -51,12 +74,9 @@ const userSlice = createSlice({
       state.user = null;
       state.token = "";
       state.isAuthenticated = false;
-      // Remove token from localStorage and set logout flag when clearing user
       if (typeof window !== "undefined") {
+        localStorage.removeItem("user");
         localStorage.removeItem("token");
-        localStorage.setItem("hasLoggedOut", "true");
-        // Also set a session flag to prevent re-authentication during this session
-        sessionStorage.setItem("userLoggedOut", "true");
       }
     },
   },

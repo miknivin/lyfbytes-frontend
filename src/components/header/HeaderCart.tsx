@@ -10,16 +10,6 @@ const HeaderCart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems); // Fixed selector
 
-  // Transform image URL function (same as ProductCard)
-  const transformImageUrl = (url: string) => {
-    const CLOUD_FRONT_BASE_URL = "https://d229x2i5qj11ya.cloudfront.net";
-    if (url.includes("kids-bags.s3.eu-north-1.amazonaws.com")) {
-      const path = url.split("/uploads")[1];
-      return `${CLOUD_FRONT_BASE_URL}/uploads${path}`;
-    }
-    return url;
-  };
-
   // Fallback to empty array if cartItems is undefined
   const items = cartItems || [];
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -50,19 +40,8 @@ const HeaderCart = () => {
                         <div className="thumb">
                           <span className="photo">
                             <img
-                              src={transformImageUrl(item.image)}
+                              src={`/assets/img/shop/${item.image}`}
                               alt={item.name}
-                              style={{
-                                width: "60px",
-                                height: "60px", 
-                                objectFit: "contain",
-                                borderRadius: "4px",
-                                backgroundColor: "#f8f9fa",
-                                padding: "3px"
-                              }}
-                              onError={(e) => {
-                                e.currentTarget.src = "/assets/img/placeholder.jpg";
-                              }}
                             />
                           </span>
                           <Link

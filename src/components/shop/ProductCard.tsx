@@ -7,8 +7,6 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faStar } from "@fortawesome/free-solid-svg-icons";
 import ProductTags from "./ProductTags";
-import BestSellerBadge from "./BestSellerBadge";
-import { shouldShowBestSellerBadge, getBestSellerBadgeVariants } from "./bestSellerUtils";
 import "./ProductCard.css";
 
 // Define DataType to match ProductSchema
@@ -43,7 +41,6 @@ interface DataType {
   badge?: string;
   tags?: string[];
   delay?: string;
-  isBestSeller?: boolean; // Flag to indicate if product is a bestseller
 }
 
 interface ProductCardProps {
@@ -52,7 +49,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, cardType = "grid" }: ProductCardProps) => {
-  const { _id, name, variants, images, ratings, numOfReviews, badge, tags, isBestSeller } = product;
+  const { _id, name, variants, images, ratings, numOfReviews, badge, tags } = product;
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const [showVariantModal, setShowVariantModal] = useState(false);
@@ -246,6 +243,7 @@ const ProductCard = ({ product, cardType = "grid" }: ProductCardProps) => {
                  transition: 'all 0.3s ease',
                  cursor: 'pointer',
                  borderRadius: '8px',
+                 height: '450px', // Fixed height for all cards
                  width: '100%'
                }}
                onMouseEnter={(e) => {
@@ -264,16 +262,9 @@ const ProductCard = ({ product, cardType = "grid" }: ProductCardProps) => {
                 </span>
               </div>
             )}
-
-            {/* Best Seller Badge */}
-            <BestSellerBadge 
-              show={isBestSeller || shouldShowBestSellerBadge(badge)}
-              position="top-right"
-              size="medium"
-            />
             
             {/* Badge */}
-            {badge && badge !== "" && !shouldShowBestSellerBadge(badge) && (
+            {badge && badge !== "" && (
               <div className="position-absolute top-0 end-0 m-1" style={{ zIndex: 2 }}>
                 <span className="badge bg-success text-white px-2 py-1" style={{ fontSize: '0.65rem', borderRadius: '4px' }}>
                   {badge}
@@ -304,23 +295,21 @@ const ProductCard = ({ product, cardType = "grid" }: ProductCardProps) => {
             </div>
 
             {/* Card Body */}
-            <div className="card-body text-center d-flex flex-column justify-content-between" 
-                 style={{ flex: '1', minHeight: 0, padding: '8px 12px' }}>
+            <div className="card-body text-center p-2 d-flex flex-column justify-content-between" 
+                 style={{ flex: '1', minHeight: 0 }}>
               <div style={{ flex: '1' }}>
                 {/* Product Tags - Always show tags */}
-                <div className="product-tags-container mb-1">
-                  <ProductTags 
-                    tags={tags} 
-                    productName={name}
-                    layout="grid"
-                    maxTags={2}
-                    showIcon={false}
-                    clickable={false}
-                  />
-                </div>
+                <ProductTags 
+                  tags={tags} 
+                  productName={name}
+                  layout="grid"
+                  maxTags={2}
+                  showIcon={false}
+                  clickable={false}
+                />
 
                 {/* Product Name */}
-                <h6 className="card-title fw-bold text-uppercase mb-1" 
+                <h6 className="card-title fw-bold text-uppercase mb-2" 
                     style={{ 
                       fontSize: '0.85rem', 
                       lineHeight: '1.2',
@@ -353,7 +342,7 @@ const ProductCard = ({ product, cardType = "grid" }: ProductCardProps) => {
                 </h6>
 
                 {/* Rating */}
-                <div className="mb-1">
+                <div className="mb-2">
                   <div className="d-flex justify-content-center align-items-center gap-1" style={{ fontSize: '0.8rem' }}>
                     {renderStars()}
                   </div>
@@ -363,7 +352,7 @@ const ProductCard = ({ product, cardType = "grid" }: ProductCardProps) => {
                 </div>
 
                 {/* Price */}
-                <div className="mb-2">
+                <div className="mb-3">
                   {oldPrice && (
                     <div className="text-muted text-decoration-line-through" style={{ fontSize: '0.8rem' }}>
                       ₹{oldPrice.toFixed(2)}
@@ -377,7 +366,7 @@ const ProductCard = ({ product, cardType = "grid" }: ProductCardProps) => {
 
               {/* Add to Cart Button */}
               <button
-                className="btn btn-danger w-100 d-flex align-items-center justify-content-center"
+                className="btn btn-danger w-100 mt-auto d-flex align-items-center justify-content-center"
                 style={{ 
                   fontSize: '0.75rem',
                   fontWeight: '600',
@@ -388,8 +377,7 @@ const ProductCard = ({ product, cardType = "grid" }: ProductCardProps) => {
                   whiteSpace: 'nowrap',
                   minHeight: '36px',
                   textAlign: 'center',
-                  lineHeight: '1',
-                  marginTop: '8px' /* Reduced from mt-auto for tighter spacing */
+                  lineHeight: '1'
                 }}
                 onClick={handleCartClick}
                 disabled={isOutOfStock}
@@ -444,15 +432,8 @@ const ProductCard = ({ product, cardType = "grid" }: ProductCardProps) => {
                     </span>
                   </div>
                 )}
-
-                {/* Best Seller Badge */}
-                <BestSellerBadge 
-                  show={isBestSeller || shouldShowBestSellerBadge(badge)}
-                  position="top-right"
-                  size="large"
-                />
                 
-                {badge && badge !== "" && !shouldShowBestSellerBadge(badge) && (
+                {badge && badge !== "" && (
                   <div className="position-absolute top-0 end-0 m-2" style={{ zIndex: 2 }}>
                     <span className="badge bg-success text-white px-2 py-1" style={{ fontSize: '0.65rem', borderRadius: '4px' }}>
                       {badge}

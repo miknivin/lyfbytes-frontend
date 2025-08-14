@@ -29,9 +29,6 @@
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s ease;
-  height: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
 }
 
 .best-seller-card .card:hover {
@@ -39,13 +36,8 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Override card-body styles for best sellers to ensure equal height */
-.best-sellers-area .best-seller-card .card-body {
-  padding: 8px 12px !important;
-  flex: 1 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
+.best-seller-card .card-body {
+  padding: 20px;
 }
 
 .best-seller-card .card-title {

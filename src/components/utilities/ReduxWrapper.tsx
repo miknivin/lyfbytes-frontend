@@ -15,9 +15,7 @@ const AuthInitializer = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
         // Check for stored token on app startup
         const storedToken = localStorage.getItem("token");
-        const hasLoggedOut = localStorage.getItem("hasLoggedOut");
-        
-        if (storedToken && hasLoggedOut !== "true") {
+        if (storedToken) {
             dispatch(setToken(storedToken));
             dispatch(setIsAuthenticated(true));
         }

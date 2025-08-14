@@ -8,7 +8,14 @@ import LayoutV6 from "../layouts/LayoutV6";
 
 const ProfileEdit = () => {
   const navigate = useNavigate();
-  const auth = useSelector((state: RootState) => state.user);
+  let auth = useSelector((state: RootState) => state.user);
+  // Fallback to localStorage if Redux user is missing
+  if (!auth.user && typeof window !== "undefined") {
+    const userStr = localStorage.getItem("user");
+    if (userStr) {
+      auth = { ...auth, user: JSON.parse(userStr) };
+    }
+  }
   const [updateProfile, { isLoading }] = useUpdateProfileMutation(); // Use RTK Query hook
 
   const [formData, setFormData] = useState({

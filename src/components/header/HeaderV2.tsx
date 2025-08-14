@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
 import { useGetMeQuery } from "../../store/api/userApi";
-import { RootState } from "../../store/store";
 import logo1 from "/assets/img/logo-1.png";
 import MainMenu from "./MainMenu";
 import SidebarInfo from "./SidebarInfo";
@@ -20,24 +18,14 @@ const HeaderV2 = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   
-  const { isAuthenticated } = useSelector((state: RootState) => state.user);
   const toggleSubMenu = useSubMenuToggle();
   const { isOpen, openMenu, closeMenu } = useSidebarMenu();
   const { openSearch, searchOpen, searchClose } = useSearchBar();
   const { isInfoOpen, closeInfoBar } = useSidebarInfo();
   const isMenuSticky = useStickyMenu();
 
-  // Check if user has explicitly logged out (both localStorage and sessionStorage)
-  const hasLoggedOut = localStorage.getItem("hasLoggedOut") === "true" || 
-                       sessionStorage.getItem("userLoggedOut") === "true";
-
-  // Fetch user data using useGetMeQuery, but skip if hasLoggedOut flag exists
-  // This prevents automatic re-authentication after explicit logout
-  useGetMeQuery(undefined, {
-    skip: hasLoggedOut,
-    // Add some delay to prevent race conditions
-    pollingInterval: hasLoggedOut ? 0 : 30000, // Poll every 30s unless logged out
-  });
+  // Fetch user data using useGetMeQuery
+  useGetMeQuery();
 
   return (
     <>
