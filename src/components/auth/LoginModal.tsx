@@ -39,6 +39,8 @@ const LoginModal: React.FC<LoginModalProps> = ({
         // Set token in Redux
         dispatch(setToken(response.token));
         
+    
+        
         // Set user data in Redux
         dispatch(
           setUser({

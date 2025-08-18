@@ -5,9 +5,8 @@ import { toast } from "react-toastify";
 import { FaUser, FaPhone, FaChevronDown } from "react-icons/fa";
 // Use full API URL for logout
 const API_URL = import.meta.env.VITE_API_URL || "";
-import axios from "axios";
 import { RootState } from "../../store/store";
-import { clearUser } from "../../store/features/userSlice";
+import { useLogoutMutation } from "../../store/api/authApi";
 
 interface DataType {
   navbarPlacement?: string;
@@ -16,17 +15,18 @@ interface DataType {
   setShowRegisterModal?: (show: boolean) => void;
 }
 
-const MainMenu: React.FC<DataType> = ({ 
-  navbarPlacement, 
-  toggleSubMenu, 
+const MainMenu: React.FC<DataType> = ({
+  navbarPlacement,
+  toggleSubMenu,
   setShowLoginModal,
-  setShowRegisterModal 
+  setShowRegisterModal,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
-  // Get authentication state from Redux
-  const { isAuthenticated, user } = useSelector((state: RootState) => state.user);
+  const { isAuthenticated, user } = useSelector(
+    (state: RootState) => state.user
+  );
+  const [logout, { isLoading }] = useLogoutMutation();
 
   const handleMyAccountClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -52,29 +52,17 @@ const MainMenu: React.FC<DataType> = ({
     }
   };
 
-  const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleLogout = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (isAuthenticated) {
-      (async () => {
-        try {
-          await axios.post(
-            `${API_URL}/api/auth/logout`,
-            {},
-            { withCredentials: true }
-          );
-          dispatch(clearUser());
-          localStorage.removeItem("user");
-          localStorage.removeItem("token");
-          sessionStorage.removeItem("user");
-          sessionStorage.removeItem("token");
-          toast.success("Logged out successfully!");
-          navigate("/");
-        } catch {
-          toast.error("Logout failed");
-        }
-      })();
+      try {
+        await logout(null).unwrap();
+        toast.success("Logged out successfully!");
+        navigate("/");
+      } catch {
+        toast.error("Logout failed");
+      }
     } else {
-      // If not authenticated, open login modal
       if (setShowLoginModal) {
         setShowLoginModal(true);
       }
@@ -140,8 +128,16 @@ const MainMenu: React.FC<DataType> = ({
               </a>
             </li>
             <li>
-              <a href="#" onClick={handleLogout}>
-                {isAuthenticated ? "Logout" : "Login"}
+              <a
+                href="#"
+                onClick={isLoading ? (e) => e.preventDefault() : handleLogout}
+                style={isLoading ? { pointerEvents: "none", opacity: 0.6 } : {}}
+              >
+                {isLoading
+                  ? "Logging out..."
+                  : isAuthenticated
+                  ? "Logout"
+                  : "Login"}
               </a>
             </li>
           </ul>

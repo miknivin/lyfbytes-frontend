@@ -1,8 +1,8 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom"; // Add useNavigate
 import BreadCrumb from "../breadCrumb/BreadCrumb";
 import FooterV1 from "../footer/FooterV1";
 import HeaderV2 from "../header/HeaderV2";
-import { useLogoutMutation } from "../../store/api/authApi";
+import { useLogoutMutation } from "../../store/api/authApi"; // Import the logout mutation hook
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -11,13 +11,12 @@ interface LayoutProps {
 }
 
 const LayoutV6 = ({ children, breadCrumb, title }: LayoutProps) => {
-  const navigate = useNavigate();
-  const [logout, { isLoading }] = useLogoutMutation();
+  const navigate = useNavigate(); // For redirecting after logout
+  const [logout, { isLoading }] = useLogoutMutation(); // Use the logout mutation hook
 
-  const handleLogout = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault(); // Prevent default navigation behavior
+  const handleLogout = async () => {
     try {
-      await logout(undefined).unwrap();
+      await logout(undefined).unwrap(); // Trigger the logout mutation
       navigate("/"); // Redirect to homepage or login page after logout
     } catch (error) {
       console.error("Logout failed:", error);
@@ -32,13 +31,9 @@ const LayoutV6 = ({ children, breadCrumb, title }: LayoutProps) => {
         <div className="row pt-10">
           {/* Sidebar Menu - col-4 on md and up, col-12 on mobile */}
           <div className="col-12 col-md-3 bg-white shadow p-3 overflow-auto">
-            <nav
-              style={{ overflowX: "auto" }}
-              className="d-flex flex-row flex-md-column gap-2"
-            >
+            <nav className="d-flex flex-row flex-md-column gap-2">
               <NavLink
                 to="/my-account"
-                style={{ whiteSpace: "nowrap" }}
                 className={({ isActive }) =>
                   `p-2 text-decoration-none rounded ${
                     isActive
@@ -51,7 +46,6 @@ const LayoutV6 = ({ children, breadCrumb, title }: LayoutProps) => {
               </NavLink>
               <NavLink
                 to="/orders"
-                style={{ whiteSpace: "nowrap" }}
                 className={({ isActive }) =>
                   `p-2 text-decoration-none rounded ${
                     isActive
@@ -64,7 +58,6 @@ const LayoutV6 = ({ children, breadCrumb, title }: LayoutProps) => {
               </NavLink>
               <NavLink
                 to="/profile"
-                style={{ whiteSpace: "nowrap" }}
                 className={({ isActive }) =>
                   `p-2 text-decoration-none rounded ${
                     isActive
@@ -75,18 +68,17 @@ const LayoutV6 = ({ children, breadCrumb, title }: LayoutProps) => {
               >
                 Account details
               </NavLink>
-              <NavLink
-                to="/logout" // Use a dummy route for consistency
-                style={{ whiteSpace: "nowrap" }}
+              {/* Replace NavLink with a button for logout */}
+              <button
                 onClick={handleLogout}
-                className={({ isActive }) =>
-                  `p-2 text-decoration-none rounded border border-danger text-dark bg-transparent hover-bg-light ${
-                    isLoading ? "opacity-50 pointer-events-none" : ""
-                  }`
-                }
+                disabled={isLoading}
+                style={{ width: "fitContent" }}
+                className={`p-2 text-decoration-none rounded border border-danger text-dark bg-transparent hover-bg-light text-start ${
+                  isLoading ? "opacity-50" : ""
+                }`}
               >
                 {isLoading ? "Logging out..." : "Logout"}
-              </NavLink>
+              </button>
             </nav>
           </div>
           {/* Main Content - col-8 on md and up, col-12 on mobile */}
