@@ -5,7 +5,7 @@ import { setUser, setIsAuthenticated, clearUser } from "../features/userSlice"; 
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: '/api/',
+    baseUrl: `${import.meta.env.VITE_API_URL || ""}/api/`,
     credentials: "include", // This ensures cookies are sent with requests
     prepareHeaders: (headers, { getState }) => {
       // Set content type for JSON requests
