@@ -52,6 +52,7 @@ const GoogleSigninButton: React.FC<GoogleSigninButtonProps> = ({
             email: response.email,
           })
         );
+        
         dispatch(setIsAuthenticated(true));
         toast.success("Login Successful");
         setShowLoginModal(false);
