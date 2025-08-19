@@ -8,7 +8,6 @@ import {
 } from "../../store/features/userSlice";
 
 interface User {
-  _id: string | undefined;
   id?: string;
   name: string;
   email: string;
@@ -61,7 +60,6 @@ export const userApi = createApi({
           const user = response.user || response.data;
           if (user) {
             return {
-              _id: user._id,
               id: user.id,
               name: user.name,
               email: user.email,
@@ -116,11 +114,9 @@ export const userApi = createApi({
           const user = response.user || response.data;
           if (user) {
             return {
-              _id: user._id,
               id: user.id,
               name: user.name,
               email: user.email,
-              phone: user.phone || "",
             };
           }
         }

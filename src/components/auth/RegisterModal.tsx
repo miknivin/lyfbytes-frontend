@@ -73,9 +73,14 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
       
       toast.success("Registration successful!");
       setShowRegisterModal(false);
-      navigate("/my-account");
       if (onRegisterSuccess) {
         onRegisterSuccess();
+      }
+      const toMyAccount = searchParams.get("toMyAccount");
+      if (toMyAccount === "true" && !onRegisterSuccess) {
+        setTimeout(() => {
+          navigate("/my-account");
+        }, 100);
       }
     } catch (error: any) {
       console.error("Registration error:", error);

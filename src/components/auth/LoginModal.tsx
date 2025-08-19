@@ -35,12 +35,8 @@ const LoginModal: React.FC<LoginModalProps> = ({
       if (response.token) {
         // Store token in localStorage for persistence
         localStorage.setItem("token", response.token);
-        
         // Set token in Redux
         dispatch(setToken(response.token));
-        
-    
-        
         // Set user data in Redux
         dispatch(
           setUser({
@@ -52,10 +48,10 @@ const LoginModal: React.FC<LoginModalProps> = ({
         dispatch(setIsAuthenticated(true));
         toast.success("Login Successful");
         setShowLoginModal(false);
-        navigate("/my-account");
         if (onLoginSuccess) {
           onLoginSuccess();
         }
+        navigate("/my-account");
       } else {
         toast.error("Login failed - invalid response");
       }

@@ -58,9 +58,14 @@ const GoogleSigninButton: React.FC<GoogleSigninButtonProps> = ({
         if (setShowRegisterModal) {
           setShowRegisterModal(false);
         }
-        navigate("/my-account");
         if (onSuccess) {
           onSuccess();
+        }
+        const toMyAccount = searchParams.get("toMyAccount");
+        if (toMyAccount === "true" && !onSuccess) {
+          setTimeout(() => {
+            navigate("/my-account");
+          }, 100);
         }
       } else {
         toast.error("Google Sign-in failed - invalid response");

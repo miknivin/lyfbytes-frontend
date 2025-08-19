@@ -46,10 +46,10 @@ const queryParams = new URLSearchParams(location.search);
           text: "You have successfully logged in!",
           confirmButtonColor: "#3085d6",
         });
-        if (toMyAccount) {
+        navigate("/my-account");
+          if (toMyAccount) {
           navigate("/my-account");
         }
-        // If you want to navigate somewhere else if toMyAccount is false, add it here
       } else {
         Swal.fire({
           icon: "error",
