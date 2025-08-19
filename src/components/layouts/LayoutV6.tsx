@@ -3,6 +3,7 @@ import BreadCrumb from "../breadCrumb/BreadCrumb";
 import FooterV1 from "../footer/FooterV1";
 import HeaderV2 from "../header/HeaderV2";
 import { useLogoutMutation } from "../../store/api/authApi"; // Import the logout mutation hook
+import { toast } from "react-toastify";
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -17,7 +18,8 @@ const LayoutV6 = ({ children, breadCrumb, title }: LayoutProps) => {
   const handleLogout = async () => {
     try {
       await logout(undefined).unwrap(); // Trigger the logout mutation
-      navigate("/"); // Redirect to homepage or login page after logout
+      navigate("/"); 
+       toast.success("Logged out successfully!");// Redirect to homepage or login page after logout
     } catch (error) {
       console.error("Logout failed:", error);
     }
@@ -72,8 +74,7 @@ const LayoutV6 = ({ children, breadCrumb, title }: LayoutProps) => {
               <button
                 onClick={handleLogout}
                 disabled={isLoading}
-                style={{ width: "fitContent" }}
-                className={`p-2 text-decoration-none rounded border border-danger text-dark bg-transparent hover-bg-light text-start ${
+                className={`p-2 text-decoration-none rounded border border-danger text-dark bg-transparent hover-bg-light text-start w-100 ${
                   isLoading ? "opacity-50" : ""
                 }`}
               >

@@ -8,6 +8,7 @@ import {
 } from "../../store/features/userSlice";
 
 interface User {
+  _id: string | undefined;
   id?: string;
   name: string;
   email: string;
@@ -38,7 +39,7 @@ interface UpdateProfileResponse {
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${import.meta.env.VITE_API_URL || ""}/api/auth`,
+    baseUrl: "/api/auth",
     credentials: "include",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).user.token; // Adjust based on your state structure
@@ -60,7 +61,7 @@ export const userApi = createApi({
           const user = response.user || response.data;
           if (user) {
             return {
-              id: user.id || "", // Handle backend _id
+              id: user.id,
               name: user.name,
               email: user.email,
               phone: user.phone || "",
@@ -75,9 +76,9 @@ export const userApi = createApi({
           const { data } = await queryFulfilled;
           dispatch(
             setUser({
-              id: data.id || "",
+              id: data.id || "", // Use id, not _id, fallback to empty string
               name: data.name || "",
-              email: data.email || "",
+              email: data.email || "", // Use email
               phone: data.phone || "",
             })
           );
@@ -93,7 +94,7 @@ export const userApi = createApi({
         }
       },
       providesTags: ["User"],
-      extraOptions: { refetchOnMountOrArgChange: true }, // Force refetch on mount
+      
     }),
     updateProfile: builder.mutation<
       User,

@@ -52,14 +52,9 @@ const LoginModal: React.FC<LoginModalProps> = ({
         dispatch(setIsAuthenticated(true));
         toast.success("Login Successful");
         setShowLoginModal(false);
+        navigate("/my-account");
         if (onLoginSuccess) {
           onLoginSuccess();
-        }
-        const toMyAccount = searchParams.get("toMyAccount");
-        if (toMyAccount === "true" && !onLoginSuccess) {
-          setTimeout(() => {
-            navigate("/my-account");
-          }, 100);
         }
       } else {
         toast.error("Login failed - invalid response");

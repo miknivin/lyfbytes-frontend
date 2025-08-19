@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../../store/api/authApi";
 import { setUser, setIsAuthenticated } from "../../store/features/userSlice";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 const LoginContent = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,9 @@ const LoginContent = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const location = useLocation();
+const queryParams = new URLSearchParams(location.search);
+    const toMyAccount = queryParams.get("toMyAccount") === "true";
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const { email, password } = formData;
@@ -42,7 +46,10 @@ const LoginContent = () => {
           text: "You have successfully logged in!",
           confirmButtonColor: "#3085d6",
         });
-        navigate("/my-account");
+        if (toMyAccount) {
+          navigate("/my-account");
+        }
+        // If you want to navigate somewhere else if toMyAccount is false, add it here
       } else {
         Swal.fire({
           icon: "error",
